@@ -8,10 +8,10 @@ from items import vs
 
 def data():
 	pa = pd.read_csv("/Users/apple/Desktop/10118245/result1.csv")
-	pa = pa[pa["status"] == "success"]
-	all_list = list(pa["id"])
+	#pa = pa[pa["status"] == "success"]
+	#all_list = list(pa["id"])
 
-	mp = Map(all_list[1])
+	mp = Map("8e6d37c84f1e373c27dbd1db38d77005d5ab27d4#1")
 	return mp
 
 

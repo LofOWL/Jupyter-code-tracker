@@ -37,10 +37,37 @@ class Map:
     def sortbyChild(self):
         self.data.sort(key=lambda x: line(x).child())
 
+    def formatData(self):
+        data = [ mapformat(i) for i in self.data]
+        return data
+
     def write(self):
         with open(self.path+"/Map/"+self.name+".txt","w") as file:
             for i in self.data:
                 file.write(i+"\n")
+
+class mapformat:
+
+
+    def __init__(self,word):
+        word = word.split(",")
+        self.data = word
+        self.child = line2(word[0])
+        self.parent = line2(word[1])
+        self.exist = self.child.exist and self.parent.exist 
+        self.pro = word[2]
+
+class line2:
+
+    def __init__(self,data):
+        if "_" != data:
+            self.exist = True
+            data = data.split(".")
+            self.block = int(data[0])
+            self.line = int(data[1])
+            self.index = int(data[2])
+        else:
+            self.exist = False
 
 
 class line:
