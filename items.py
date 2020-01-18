@@ -29,7 +29,7 @@ class vs(Canvas):
         for information in self.childFile:
             a = Block(self,information,h,"c")
             self.childBlock.append(a)
-            h = a.right
+            h = a.y2
 
 
         self.parentBlock = []
@@ -37,16 +37,19 @@ class vs(Canvas):
         for information in self.parentFile:
             a = Block(self,information,h,"p")
             self.parentBlock.append(a)
-            h = a.right
+            h = a.y2
 
     def _create_line(self):
 
     	for i in self.mapFile:
     		if i.exist:
+
+                #child = self.childBlock[i.child.block-1].lines[i.child.line-1]
     			child = [ j for j in self.childBlock[i.child.block-1].lines if j.index == i.child.line][0]
+                #parent = self.parentBlock[i.parent.block-1].lines[i.parent.line-1]
     			parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.index == i.parent.line][0]
 
-    			self.create_line(child.down,child.right-5,parent.top,parent.right-5,fill="black",width=3)
+    			self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3)
 
 
 
@@ -64,36 +67,38 @@ class Block:
 
         self.lines = []
 
+        self.height = len(info["lines"])*10 + (len(info["lines"]) -1)*15+ 2*10 +ph
+
         if type == "c":
 
-            self.height = len(info["lines"])*30 + ph
-            self.top = 10
-            self.down = self.top + self._width
-            self.left = ph+self._gap_v
-            self.right = self.height
+            #self.height = len(info["lines"])*10 + (len(info["lines"]) -1)*15+ 2*10 +ph
+            self.x1 = 10
+            self.x2 = self.x1 + self._width
+            self.y1 = ph+self._gap_v
+            self.y2 = self.height
 
-            parent.create_rectangle(self.top, self.left, self.down, self.right, fill="yellow")
+            parent.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="yellow")
 
             start_h = ph
             for i in range(len(info["lines"])):
-                a = Line(parent,self.top,start_h,i,"c")
+                a = Line(parent,self.x1,start_h,i,"c")
                 self.lines.append(a)
-                start_h = a.right
+                start_h = a.y2
         else:
 
-            self.height = len(info["lines"])*30 + ph
-            self.top = 10+self._width+self._gap_h
-            self.down =  self.top + self._width
-            self.left = ph+self._gap_v
-            self.right = self.height
+            #self.height = len(info["lines"])*30 + ph
+            self.x1 = 10+self._width+self._gap_h
+            self.x2 =  self.x1 + self._width
+            self.y1 = ph+self._gap_v
+            self.y2 = self.height
 
-            parent.create_rectangle(self.top,self.left,self.down, self.right, fill="yellow")
+            parent.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow")
 
             start_h = ph
             for i in range(len(info["lines"])):
-                a = Line(parent,self.top,start_h,i,"p")
+                a = Line(parent,self.x1,start_h,i,"p")
                 self.lines.append(a)
-                start_h = a.right
+                start_h = a.y2
 
         parent.pack(fill=BOTH, expand=YES)
 
@@ -110,12 +115,12 @@ class Line:
 
         self.index = index + 1
 
-        self.top = start_w+self._gap_h
-        self.down = self.top + self._width
-        self.left = start_h+self._gap_v
-        self.right = self._gap_v + start_h + self._height
+        self.x1 = start_w+self._gap_h
+        self.x2 = self.x1 + self._width
+        self.y1 = start_h+self._gap_v
+        self.y2 = self._gap_v + start_h + self._height
 
-        self.rectangle = parent.create_rectangle(self.top, self.left, self.down, self.right, fill="red")
+        self.rectangle = parent.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red")
 
 
         parent.pack(fill=BOTH, expand=YES)
