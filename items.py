@@ -6,8 +6,20 @@ class vs(Canvas):
     def __init__(self, parent,data):
         Canvas.__init__(self, parent)
         self.config(bg="green")
-        
 
+        self.parentFile = None
+
+        self.childFile = None
+        self.mapFile = None
+
+        self.parentBlock = []
+        self.childBlock = []
+        
+        self._main_process(data)
+
+
+    def _main_process(self,data):
+        
         self.parentFile = data.parentFile.data
 
         self.childFile = data.childFile.data
@@ -50,6 +62,10 @@ class vs(Canvas):
     			parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.index == i.parent.line][0]
 
     			self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3)
+
+    def refresh(self,data):
+        self.delete("all")
+        self._main_process(data)
 
 
 
