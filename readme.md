@@ -4,21 +4,21 @@
 
 #### Block Split
 
-<center>![avatar](png/block_split.png)</center>
+<center> ![Alt text](png/block_split.png)</center>
 
 #### Block reorder
 
-<center>![avatar](png/reorder.png)</center>
+<center> ![Alt text](png/reorder.png)</center>
 
 
 #### Block Add
 
-<center>![avatar](png/add.png)</center>
+<center> ![Alt text](png/add.png)</center>
 
 
 #### ???
 
-<center>![avatar](png/un.png)</center>
+<center> ![Alt text](png/un.png)</center>
 
 
 
