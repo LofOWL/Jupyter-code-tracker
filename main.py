@@ -55,7 +55,7 @@ class Tool:
 		self.canvas = vs(self.root,mp)
 
 		frame=Frame(self.root,width=200,height=self.screen_height)
-		frame.pack(expand=True, fill=BOTH) #.grid(row=0,column=0)
+		frame.pack(expand=True, fill=BOTH) 
 
 		vbar=Scrollbar(frame,orient=VERTICAL)
 		vbar.pack(side=RIGHT,fill=Y)
@@ -64,8 +64,6 @@ class Tool:
 		self.canvas.configure(scrollregion = self.canvas.bbox("all"))
 		self.canvas.config(yscrollcommand=vbar.set)
 		self.canvas.pack(side=LEFT,expand=True,fill=BOTH)
-
-
 
 	def run(self):
 		self.root.mainloop()
