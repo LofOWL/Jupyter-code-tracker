@@ -5,8 +5,8 @@ import pandas as pd
 class Map:
 
     def __init__(self,name):
-
-        self.path = "/Users/apple/Desktop/10118245"
+        cwd = os.getcwd()
+        self.path = cwd+"/10118245"
         self.name = name
 
         self.data = None
@@ -117,7 +117,7 @@ class NewFile:
 
 
 if __name__ == "__main__":
-    pa = pd.read_csv("/Users/apple/Desktop/10118245/result1.csv")
+    pa = pd.read_csv("/10118245/result1.csv")
     pa = pa[pa["status"] == "success"]
     all_list = list(pa["id"])
     for i in all_list:

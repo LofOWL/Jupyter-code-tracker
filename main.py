@@ -5,6 +5,7 @@ from map import Map
 import pandas as pd
 
 from items import vs
+import os
 
 class Tool:
 
@@ -27,7 +28,8 @@ class Tool:
 
 	def _init_box(self):
 		def alist():
-			pa = pd.read_csv("/Users/apple/Desktop/10118245/result1.csv")
+			cwd = os.getcwd()
+			pa = pd.read_csv(cwd+"/10118245/result1.csv")
 			pa = pa[pa["status"] == "success"]
 			all_list = list(pa["id"])
 			return all_list
