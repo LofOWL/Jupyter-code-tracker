@@ -1,11 +1,13 @@
 from tkinter import *
-
+from map_block import MapBlock
 
 class vs(Canvas):
     
     def __init__(self, parent,data):
         Canvas.__init__(self, parent)
         self.config(bg="green")
+
+        self.data = None
 
         self.parentFile = None
 
@@ -19,6 +21,8 @@ class vs(Canvas):
 
 
     def _main_process(self,data):
+
+        self.data = data
         
         self.parentFile = data.parentFile.data
 
@@ -31,7 +35,10 @@ class vs(Canvas):
         
         self._draw_two_notebook_block()
 
+        self._create_block()
+
         self._create_line()
+
 
         
     def _draw_two_notebook_block(self):
@@ -63,13 +70,17 @@ class vs(Canvas):
 
     			self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3)
 
+
+    def _create_block(self):
+        a = MapBlock(self.data)
+        for i in a.type_total():
+            child = self.childBlock[i[0]-1]
+            parent = self.parentBlock[i[1]-1]
+            self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='#808080')
+
     def refresh(self,data):
         self.delete("all")
         self._main_process(data)
-
-
-
-
 
         
 class Block:
