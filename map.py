@@ -48,7 +48,6 @@ class Map:
 
 class mapformat:
 
-
     def __init__(self,word):
         word = word.split(",")
         self.data = word
@@ -56,6 +55,7 @@ class mapformat:
         self.parent = line2(word[1])
         self.exist = self.child.exist and self.parent.exist 
         self.pro = word[2]
+
 
 class line2:
 
@@ -68,6 +68,7 @@ class line2:
             self.index = int(data[2])
         else:
             self.exist = False
+            self.block = -1
 
 
 class line:

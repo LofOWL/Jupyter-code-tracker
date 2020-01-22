@@ -91,9 +91,10 @@ def checkall():
 
 
 if __name__ == "__main__":
-	mp = Map("7e104b2e83fc2386d98a4501ef6c6e3f9fb88a7b#0")
-	a = MapBlock(mp)
-	total = a.type_total()
-	print(total)
-	print(a.type_split())
-	print(a.type_merge())
+	checkall()
+	# mp = Map("7e104b2e83fc2386d98a4501ef6c6e3f9fb88a7b#0")
+	# a = MapBlock(mp)
+	# total = a.type_total()
+	# print(total)
+	# print(a.type_split())
+	# print(a.type_merge())

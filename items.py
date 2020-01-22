@@ -42,6 +42,8 @@ class vs(Canvas):
 
         self._create_split_type_block()
 
+        self._create_merge_type_block()
+
         self._create_line()
 
 
@@ -93,6 +95,14 @@ class vs(Canvas):
                 parent = self.parentBlock[j-1]
                 self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='blue')
 
+    def _create_merge_type_block(self):
+        a = MapBlock(self.data)
+
+        for i in a.type_merge():
+            parent = self.parentBlock[i[1]-1]
+            for j in i[0]:
+                child = self.childBlock[j-1]
+                self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='red')
     
     def refresh(self,data):
         self.delete("all")

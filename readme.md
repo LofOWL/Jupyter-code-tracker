@@ -3,6 +3,8 @@
 
 ### Move
 
+Can have probability
+
 * Total Move
 	* len(child) == len(parent), All $a \in child$, are also $\in parent$
 
@@ -29,12 +31,21 @@
 
 For all $b \in parent$ not exist $b \in$ any child.
 
+* By index 
+	* first
+	* middle
+	* last
+
 
 ### Delete
 
 For all $a \in child$ not exist $a \in$ any parent.
 
 
+* By index
+	* first
+	* middle
+	* last
 
 
 
