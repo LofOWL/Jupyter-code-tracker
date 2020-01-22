@@ -7,15 +7,15 @@ class vs(Canvas):
         Canvas.__init__(self, parent)
         self.config(bg="green")
 
-        self.data = None
+        # self.data = None
 
-        self.parentFile = None
+        # self.parentFile = None
 
-        self.childFile = None
-        self.mapFile = None
+        # self.childFile = None
+        # self.mapFile = None
 
-        self.parentBlock = []
-        self.childBlock = []
+        # self.parentBlock = []
+        # self.childBlock = []
         
         self._main_process(data)
 
@@ -32,10 +32,15 @@ class vs(Canvas):
 
         self.parentBlock = []
         self.childBlock = []
+
+        self.line_widget = []
+        self.block_widget = []
         
         self._draw_two_notebook_block()
 
         self._create_block()
+
+        self._create_split_type_block()
 
         self._create_line()
 
@@ -68,16 +73,27 @@ class vs(Canvas):
                 #parent = self.parentBlock[i.parent.block-1].lines[i.parent.line-1]
     			parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.index == i.parent.line][0]
 
-    			self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3)
+    			self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
 
 
     def _create_block(self):
+
         a = MapBlock(self.data)
         for i in a.type_total():
             child = self.childBlock[i[0]-1]
             parent = self.parentBlock[i[1]-1]
             self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='#808080')
 
+    def _create_split_type_block(self):
+        a = MapBlock(self.data)
+
+        for i in a.type_split():
+            child = self.childBlock[i[0]-1]
+            for j in i[1]:
+                parent = self.parentBlock[j-1]
+                self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='blue')
+
+    
     def refresh(self,data):
         self.delete("all")
         self._main_process(data)
