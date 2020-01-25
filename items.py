@@ -121,14 +121,8 @@ class Block:
             self.x2 = self.x1 + self._width
             self.y1 = ph+self._gap_v
             self.y2 = self.height
+            self.tags = self.type +","+str(self.block)
 
-            parent.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="yellow")
-
-            start_h = ph
-            for i in range(len(info["lines"])):
-                a = Line(parent,self,info["lines"][i],start_h,i)
-                self.lines.append(a)
-                start_h = a.y2
         else:
 
             #self.height = len(info["lines"])*30 + ph
@@ -136,14 +130,23 @@ class Block:
             self.x2 =  self.x1 + self._width
             self.y1 = ph+self._gap_v
             self.y2 = self.height
+            self.tags = self.type +","+str(self.block)
 
-            parent.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow")
+        parent.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
 
-            start_h = ph
-            for i in range(len(info["lines"])):
-                a = Line(parent,self,info["lines"][i],start_h,i)
-                self.lines.append(a)
-                start_h = a.y2
+        def show(*args):
+            print(self.tags)
+            for i in info["lines"]:
+                print(i)
+            print("-----")
+
+        parent.tag_bind(self.tags,"<Button-1>",show)
+
+        start_h = ph
+        for i in range(len(info["lines"])):
+            a = Line(parent,self,info["lines"][i],start_h,i)
+            self.lines.append(a)
+            start_h = a.y2
 
         parent.pack(fill=BOTH, expand=YES)
 
