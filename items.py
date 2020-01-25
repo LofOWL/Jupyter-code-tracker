@@ -6,16 +6,6 @@ class vs(Canvas):
     def __init__(self, parent,data):
         Canvas.__init__(self, parent)
         self.config(bg="green")
-
-        # self.data = None
-
-        # self.parentFile = None
-
-        # self.childFile = None
-        # self.mapFile = None
-
-        # self.parentBlock = []
-        # self.childBlock = []
         
         self._main_process(data)
 
@@ -120,9 +110,11 @@ class Block:
 
         self.lines = []
 
+        self.type = type
+
         self.height = len(info["lines"])*10 + (len(info["lines"]) -1)*15+ 2*10 +ph
 
-        if type == "c":
+        if self.type == "c":
 
             #self.height = len(info["lines"])*10 + (len(info["lines"]) -1)*15+ 2*10 +ph
             self.x1 = 10
@@ -134,7 +126,7 @@ class Block:
 
             start_h = ph
             for i in range(len(info["lines"])):
-                a = Line(parent,self.x1,start_h,i,"c")
+                a = Line(parent,self,info["lines"][i],start_h,i)
                 self.lines.append(a)
                 start_h = a.y2
         else:
@@ -149,7 +141,7 @@ class Block:
 
             start_h = ph
             for i in range(len(info["lines"])):
-                a = Line(parent,self.x1,start_h,i,"p")
+                a = Line(parent,self,info["lines"][i],start_h,i)
                 self.lines.append(a)
                 start_h = a.y2
 
@@ -158,7 +150,12 @@ class Block:
 
 class Line:
 
-    def __init__(self,parent,start_w,start_h,index,type):
+    def __init__(self,parent,block,info,start_h,index):
+
+        def show(*args):
+            print(self.tags)
+            print(info)
+            print("-----")
 
         self._gap_v = 15
         self._gap_h = 10
@@ -168,12 +165,17 @@ class Line:
 
         self.index = index + 1
 
-        self.x1 = start_w+self._gap_h
+        self.x1 = block.x1+self._gap_h
         self.x2 = self.x1 + self._width
         self.y1 = start_h+self._gap_v
         self.y2 = self._gap_v + start_h + self._height
 
-        self.rectangle = parent.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red")
+        alist = [block.type,block.block,index]
+        self.tags = ",".join([str(i) for i in alist])
+
+        self.rectangle = parent.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red",tags=self.tags)
+
+        parent.tag_bind(self.tags,"<Button-1>",show)
 
 
         parent.pack(fill=BOTH, expand=YES)
