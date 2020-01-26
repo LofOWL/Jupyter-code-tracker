@@ -1,76 +1,35 @@
-# Jupyter notebook line movement tracker
+#Tutorial
+
+Go to transfer folder,
+then run the below command in terminal
+
+```
+python3 main.py <repo_address> <save_to_address>
+
+```
+
+Ex.
 
 
-### Move
+```
+python3 main.py /Users/apple/data/repo /Users/apple/Desktop
 
-Can have probability
+```
 
-* Total Move
-	* len(child) == len(parent), All $a \in child$, are also $\in parent$
+After finish the process,
 
-* Add parent Move
-	* len(child) < len(parent), All $ a \in child$, are also $\in parent$
+then go back to main folder, and run the below command in terminal
 
-* Add child Move
-	* len(child) > len(parent), All $ b \in parent$ are also $\in child$
+```
+main.py <save_to_address>+<repo_name>
 
-* Mul Move
-	* len(child) $\neq$ len(parent), Exist some $a \in child$ are also $\in parent$
+```
 
-### Split
-
-* Exist at least two parent such that $a \in P_{1}$ and $b \in P_{2}$ where $a,b \in C$, so C is split.
+Ex.
 
 
-### Merge
+```
 
-* Exist at least two child such that $a \in C_{1}$ and $b \in C_{2}$ where $a,b \in P$, so P is split.
+python3 main.py /Users/apple/Desktop/repo
 
-
-### Add
-
-For all $b \in parent$ not exist $b \in$ any child.
-
-* By index 
-	* first
-	* middle
-	* last
-
-
-### Delete
-
-For all $a \in child$ not exist $a \in$ any parent.
-
-
-* By index
-	* first
-	* middle
-	* last
-
-
-
-
-
-
-### Types of Block mapping
-
-#### Block Split
-
-<center> ![alt_text](png/block_split.png)</center>
-
-#### Block reorder
-
-<center> ![alt_text](png/reorder.png)</center>
-
-
-#### Block Add
-
-<center> ![alt_text](png/add.png)</center>
-
-
-#### ???
-
-<center> ![alt_text](png/un.png)</center>
-
-
-
+```
