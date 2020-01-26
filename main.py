@@ -1,13 +1,13 @@
 from tkinter import *
 from tkinter import ttk
-from map import Map
 
+import os
+import sys
 import pandas as pd
 
-from items import vs
-import os
+from lib.map import Map
+from lib.items import vs
 
-import sys
 
 class Tool:
 
@@ -24,6 +24,7 @@ class Tool:
 		self._init_box()
 		self._init_button()
 		self.canvas = None
+		self.vbar = None
 		self._init_vs()
 
 	def _init_root(self):
@@ -32,8 +33,11 @@ class Tool:
 
 	def _init_box(self):
 		def alist():
-			cwd = os.getcwd()
-			pa = pd.read_csv(cwd+"/10118245/result1.csv")
+			if self.path != None:
+				pa = pd.read_csv(self.path+"/result1.csv")
+			else:
+				cwd = os.getcwd()
+				pa = pd.read_csv(cwd+"/10118245/result1.csv")
 			pa = pa[pa["status"] == "success"]
 			all_list = list(pa["id"])
 			return all_list
@@ -46,8 +50,11 @@ class Tool:
 	def _init_button(self):
 		def reload():
 			self.currentId = self.data[self.shaList.current()]
-			mp = Map(self.currentId)
+			mp = Map(self.currentId,self.path)
 			self.canvas.refresh(mp)
+			self.vbar.config(command=self.canvas.yview)
+			self.canvas.configure(scrollregion = self.canvas.bbox("all"))
+			self.canvas.config(yscrollcommand=self.vbar.set)
 		change = Button(self.root, text="change", command=reload)
 		change.pack()
 
@@ -55,18 +62,18 @@ class Tool:
 
 	def _init_vs(self):
 
-		mp = Map(self.currentId)
+		mp = Map(self.currentId,self.path)
 		self.canvas = vs(self.root,mp)
 
 		frame=Frame(self.root,width=200,height=self.screen_height)
 		frame.pack(expand=True, fill=BOTH) 
 
-		vbar=Scrollbar(frame,orient=VERTICAL)
-		vbar.pack(side=RIGHT,fill=Y)
-		vbar.config(command=self.canvas.yview)
+		self.vbar=Scrollbar(frame,orient=VERTICAL)
+		self.vbar.pack(side=RIGHT,fill=Y)
+		self.vbar.config(command=self.canvas.yview)
 
 		self.canvas.configure(scrollregion = self.canvas.bbox("all"))
-		self.canvas.config(yscrollcommand=vbar.set)
+		self.canvas.config(yscrollcommand=self.vbar.set)
 		self.canvas.pack(side=LEFT,expand=True,fill=BOTH)
 
 	def run(self):

@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 
-from gitCom import git
+from lib.gitCom import git
 
 
 import json as js

@@ -4,9 +4,9 @@ import pandas as pd
 
 class Map:
 
-    def __init__(self,name):
+    def __init__(self,name,path):
 
-        self.path = "/Users/apple/Desktop/10118245"
+        self.path = path
         self.name = name
 
         self.data = None

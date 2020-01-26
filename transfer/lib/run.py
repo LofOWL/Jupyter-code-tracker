@@ -1,9 +1,11 @@
-from Repo import Repo,Files
 import pandas as pd
 import numpy as np
 import os
-from connecter import connecter
 from tqdm import tqdm
+
+from lib.connecter import connecter
+from lib.Repo import Repo,Files
+
 
 class run:
 
