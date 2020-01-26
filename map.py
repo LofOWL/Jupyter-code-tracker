@@ -4,9 +4,12 @@ import pandas as pd
 
 class Map:
 
-    def __init__(self,name):
-        cwd = os.getcwd()
-        self.path = cwd+"/10118245"
+    def __init__(self,name,path=None):
+        if path != None:
+            self.path = path
+        else:
+            cwd = os.getcwd()
+            self.path = cwd+"/10118245"
         self.name = name
 
         self.data = None

@@ -7,11 +7,15 @@ import pandas as pd
 from items import vs
 import os
 
+import sys
+
 class Tool:
 
-	def __init__(self):
+	def __init__(self,path=None):
 		self.root = Tk()
 		self.screen_height = None
+
+		self.path = path
 
 		self._init_root()
 		self.shaListBox = None
@@ -35,7 +39,6 @@ class Tool:
 			return all_list
 		self.data = alist()
 		self.currentId = self.data[0]
-
 		self.shaList = ttk.Combobox(self.root, values=self.data, width=100)
 		self.shaList.current(1)
 		self.shaList.pack()
@@ -71,5 +74,11 @@ class Tool:
 
 
 if __name__ == "__main__":
-	tool = Tool()
-	tool.run()
+
+	alist = sys.argv
+	if len(alist) == 1:
+		tool = Tool()
+		tool.run()
+	else:
+		tool = Tool(path=sys.argv[1])
+		tool.run()
