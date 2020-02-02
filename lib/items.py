@@ -1,24 +1,33 @@
 from tkinter import *
+
 from lib.map_block import MapBlock
+from lib.ViewJupyter import ViewJupyter
+
 
 class vs(Canvas):
     
-    def __init__(self, parent,data):
+    def __init__(self, parent,mp):
         Canvas.__init__(self, parent)
         self.config(bg="green")
         
-        self._main_process(data)
+        self.ViewJ = ViewJupyter(mp)
+        self.ViewJ.run()
+        self._main_process(mp)
 
 
-    def _main_process(self,data):
 
-        self.data = data
+
+    def _main_process(self,mp):
+
+        self.mp = mp
+
+        self.ViewJ.refresh(self.mp)
         
-        self.parentFile = data.parentFile.data
+        self.parentFile = mp.parentFile.data
 
-        self.childFile = data.childFile.data
+        self.childFile = mp.childFile.data
 
-        self.mapFile = data.formatData()
+        self.mapFile = mp.formatData()
 
         self.parentBlock = []
         self.childBlock = []
@@ -70,14 +79,14 @@ class vs(Canvas):
 
     def _create_block(self):
 
-        a = MapBlock(self.data)
+        a = MapBlock(self.mp)
         for i in a.type_total():
             child = self.childBlock[i[0]-1]
             parent = self.parentBlock[i[1]-1]
             self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='#808080')
 
     def _create_split_type_block(self):
-        a = MapBlock(self.data)
+        a = MapBlock(self.mp)
 
         for i in a.type_split():
             child = self.childBlock[i[0]-1]
@@ -86,7 +95,7 @@ class vs(Canvas):
                 self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='blue')
 
     def _create_merge_type_block(self):
-        a = MapBlock(self.data)
+        a = MapBlock(self.mp)
 
         for i in a.type_merge():
             parent = self.parentBlock[i[1]-1]
@@ -94,14 +103,14 @@ class vs(Canvas):
                 child = self.childBlock[j-1]
                 self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='red')
     
-    def refresh(self,data):
+    def refresh(self,mp):
         self.delete("all")
-        self._main_process(data)
+        self._main_process(mp)
 
         
 class Block:
 
-    def __init__(self,parent,info,ph,type):
+    def __init__(self,vs,info,ph,type):
         self._width = 100
         self._gap_v = 10
         self._gap_h = 60
@@ -132,28 +141,30 @@ class Block:
             self.y2 = self.height
             self.tags = self.type +","+str(self.block)
 
-        parent.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
+        vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
 
         def show(*args):
             print(self.tags)
             for i in info["lines"]:
                 print(i)
             print("-----")
+            vs.ViewJ.color_block(self.block,self.type)
 
-        parent.tag_bind(self.tags,"<Button-1>",show)
+
+        vs.tag_bind(self.tags,"<Button-1>",show)
 
         start_h = ph
         for i in range(len(info["lines"])):
-            a = Line(parent,self,info["lines"][i],start_h,i)
+            a = Line(vs,self,info["lines"][i],start_h,i)
             self.lines.append(a)
             start_h = a.y2
 
-        parent.pack(fill=BOTH, expand=YES)
+        vs.pack(fill=BOTH, expand=YES)
 
 
 class Line:
 
-    def __init__(self,parent,block,info,start_h,index):
+    def __init__(self,vs,block,info,start_h,index):
 
         def show(*args):
             print(self.tags)
@@ -176,12 +187,16 @@ class Line:
         alist = [block.type,block.block,index]
         self.tags = ",".join([str(i) for i in alist])
 
-        self.rectangle = parent.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red",tags=self.tags)
+        self.rectangle = vs.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red",tags=self.tags)
 
-        parent.tag_bind(self.tags,"<Button-1>",show)
+        vs.tag_bind(self.tags,"<Button-1>",show)
 
 
-        parent.pack(fill=BOTH, expand=YES)
+        vs.pack(fill=BOTH, expand=YES)
+
+
+
+
 
 
 
