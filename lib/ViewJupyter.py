@@ -76,10 +76,10 @@ class ViewJupyter:
             self.updateP()
 
         p1 = Process(target=_init_jupyter)
-        p2 = Process(target=_init_web)
 
         p1.start()
-        p2.start()
+
+        _init_web()
 
 
             

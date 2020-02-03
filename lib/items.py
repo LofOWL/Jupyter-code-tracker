@@ -20,8 +20,6 @@ class vs(Canvas):
     def _main_process(self,mp):
 
         self.mp = mp
-
-        self.ViewJ.refresh(self.mp)
         
         self.parentFile = mp.parentFile.data
 
@@ -105,7 +103,9 @@ class vs(Canvas):
     
     def refresh(self,mp):
         self.delete("all")
+        self.ViewJ.refresh(self.mp)
         self._main_process(mp)
+
 
         
 class Block:
