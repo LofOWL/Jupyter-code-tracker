@@ -1,4 +1,12 @@
-#Tutorial
+# Tutorial
+
+Demo:
+
+1. cd Jupyter-code-tracker
+2. python3 main.py 10118245
+
+
+##### Still working on below (some bugs):
 
 Go to transfer folder,
 then run the below command in terminal

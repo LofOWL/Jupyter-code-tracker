@@ -16,13 +16,14 @@ class ViewJupyter:
         self.old_path = self.path+"/Old/"
         self.mp = mp
 
-        self.broswer_c = webdriver.Chrome("chromedriver")
-        self.broswer_p = webdriver.Chrome("chromedriver")
+        self.broswer_c = None
+        self.broswer_p = None
 
     def refresh(self,mp):
         self.mp = mp
-        self.updateC()
-        self.updateP()
+        if self.broswer_c != None and self.broswer_p != None:
+            self.updateC()
+            self.updateP()
 
     def updateC(self):
         file_path = self.old_path+self.mp.name+"#c"+".ipynb"
@@ -63,6 +64,9 @@ class ViewJupyter:
                     address = [i for i in alist if "9000" in i][0].split(" :: ")[0]
 
             self.address = address
+
+            self.broswer_c = webdriver.Chrome("chromedriver")
+            self.broswer_p = webdriver.Chrome("chromedriver")
 
             self.broswer_c.get(self.address)
             self.broswer_p.get(self.address)
