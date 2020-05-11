@@ -5,11 +5,11 @@ from lib.ViewJupyter import ViewJupyter
 
 
 class vs(Canvas):
-    
+
     def __init__(self, parent,mp):
         Canvas.__init__(self, parent)
         self.config(bg="green")
-        
+
         self.ViewJ = ViewJupyter(mp)
         self.ViewJ.run()
         self._main_process(mp)
@@ -20,7 +20,7 @@ class vs(Canvas):
     def _main_process(self,mp):
 
         self.mp = mp
-        
+
         self.parentFile = mp.parentFile.data
 
         self.childFile = mp.childFile.data
@@ -32,7 +32,7 @@ class vs(Canvas):
 
         self.line_widget = []
         self.block_widget = []
-        
+
         self._draw_two_notebook_block()
 
         self._create_block()
@@ -44,7 +44,7 @@ class vs(Canvas):
         self._create_line()
 
 
-        
+
     def _draw_two_notebook_block(self):
 
         self.childBlock = []
@@ -64,15 +64,15 @@ class vs(Canvas):
 
     def _create_line(self):
 
-    	for i in self.mapFile:
-    		if i.exist:
+        for i in self.mapFile:
+            if i.exist:
 
                 #child = self.childBlock[i.child.block-1].lines[i.child.line-1]
-    			child = [ j for j in self.childBlock[i.child.block-1].lines if j.index == i.child.line][0]
+                child = [ j for j in self.childBlock[i.child.block-1].lines if j.index == i.child.line][0]
                 #parent = self.parentBlock[i.parent.block-1].lines[i.parent.line-1]
-    			parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.index == i.parent.line][0]
+                parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.index == i.parent.line][0]
 
-    			self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
+                self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
 
 
     def _create_block(self):
@@ -100,14 +100,17 @@ class vs(Canvas):
             for j in i[0]:
                 child = self.childBlock[j-1]
                 self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='red')
-    
+
     def refresh(self,mp):
         self.delete("all")
-        self.ViewJ.refresh(self.mp)
-        self._main_process(mp)
+        print("get in **** ")
+        print(self.mp)
+        for _ in range(3):
+            self.ViewJ.refresh(self.mp)
+            self._main_process(mp)
 
 
-        
+
 class Block:
 
     def __init__(self,vs,info,ph,type):
@@ -193,17 +196,3 @@ class Line:
 
 
         vs.pack(fill=BOTH, expand=YES)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

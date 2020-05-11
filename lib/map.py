@@ -1,6 +1,7 @@
 import os
 import json as js
 import pandas as pd
+import sys
 
 class Map:
 
@@ -56,7 +57,7 @@ class mapformat:
         self.data = word
         self.child = line2(word[0])
         self.parent = line2(word[1])
-        self.exist = self.child.exist and self.parent.exist 
+        self.exist = self.child.exist and self.parent.exist
         self.pro = word[2]
 
 
@@ -120,14 +121,30 @@ class NewFile:
             return str(block)+"."+str(block_index)+"."+str(index)
 
 
+def saveAll():
+    if (len(sys.argv) == 1):
+        pa = pd.read_csv("/result.csv")
+        pa = pa[pa["status"] == "success"]
+        all_list = list(pa["id"])
+        for i in all_list:
+            print(i)
+            a = Map(i)
+            a.parentMaptoChild()
+            a.sortbyChild()
+            a.write()
+            print("done")
+    else:
+        pa = pd.read_csv(sys.argv[1]+"/result.csv")
+        pa = pa[pa["status"] == "success"]
+        all_list = list(pa["id"])
+        for i in all_list:
+            print(i)
+            a = Map(i,path=sys.argv[1])
+            a.parentMaptoChild()
+            a.sortbyChild()
+            a.write()
+            print("done")
+
+
 if __name__ == "__main__":
-    pa = pd.read_csv("/10118245/result1.csv")
-    pa = pa[pa["status"] == "success"]
-    all_list = list(pa["id"])
-    for i in all_list:
-        print(i)
-        a = Map(i)
-        a.parentMaptoChild()
-        a.sortbyChild()
-        a.write()
-        print("done")
+    saveAll()

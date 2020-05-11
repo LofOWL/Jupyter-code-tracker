@@ -39,7 +39,7 @@ class run:
 
         # remove old files
         os.chdir(self.saveTo)
-        os.system("rm -r Old")
+        #os.system("rm -r Old")
         os.system("rm -f lhdiff_2019.jar")
         os.system("rm -f child.txt")
         os.system("rm -f parent.txt")

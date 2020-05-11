@@ -26,7 +26,8 @@ class ViewJupyter:
             self.updateP()
 
     def updateC(self):
-        file_path = self.old_path+self.mp.name+"#c"+".ipynb"
+        # file_path = self.old_path+self.mp.name+"#c"+".ipynb"
+        file_path = "10118245/Old/"+self.mp.name+"#c.ipynb"
         html = file_path.replace("#","%23")
         #self.broswer_c.get("http://localhost:9000/tree"+"/Desktop"+self.html.split("Desktop")[1])
         print(html)
@@ -34,7 +35,8 @@ class ViewJupyter:
         self.broswer_c.get("http://localhost:9000/tree/"+html)
 
     def updateP(self):
-        file_path = self.old_path+self.mp.name+"#p"+".ipynb"
+        # file_path = self.old_path+self.mp.name+"#p"+".ipynb"
+        file_path = "10118245/Old/"+self.mp.name+"#p.ipynb"
         html = file_path.replace("#","%23")
         #self.broswer_p.get("http://localhost:9000/tree"+"/Desktop"+self.html.split("Desktop")[1])
         print(html)
@@ -42,7 +44,7 @@ class ViewJupyter:
         self.broswer_p.get("http://localhost:9000/tree/"+html)
 
     def run(self):
-        
+
         # terminal = appscript.app('Terminal').do_script(commond)
 
         #n = os.fork()
@@ -65,13 +67,16 @@ class ViewJupyter:
 
             self.address = address
 
-            self.broswer_c = webdriver.Chrome("chromedriver")
-            self.broswer_p = webdriver.Chrome("chromedriver")
+            tool_address = self.path.split("/")
+            tool_address = "/".join(tool_address[:len(tool_address)-1])+"/chromedriver"
+
+            self.broswer_c = webdriver.Chrome(tool_address)
+            self.broswer_p = webdriver.Chrome(tool_address)
 
             self.broswer_c.get(self.address)
             self.broswer_p.get(self.address)
 
-            
+
             self.updateC()
             self.updateP()
 
@@ -82,14 +87,14 @@ class ViewJupyter:
         _init_web()
 
 
-            
-        
+
+
 
     def color_block(self,index,type):
-        
+
         def js_set(index):
             return """var x = document.getElementById("notebook-container").querySelectorAll(".cell");x[%s].style.background='red';"""%(index)
-        
+
         if type == "c":
             self.broswer_c.execute_script(js_set(index-1))
         else:

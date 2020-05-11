@@ -6,7 +6,6 @@ from lib.gitCom import git
 
 
 import json as js
-
 import subprocess
 import ast
 
@@ -18,9 +17,7 @@ import multiprocessing
 import time
 
 import threading
-
 from threading import Timer
-
 from subprocess import STDOUT, check_output
 
 class Repo:
@@ -159,6 +156,22 @@ class Files:
                 start = start + linesLength
                 info['lines'] = lines
                 list_result.append(info)
+            elif "input" in i.keys():
+                info = {}
+                info["block"] = block
+                block += 1
+                info['type'] = i['cell_type']
+                lines = i['input']
+                linesLength = len(i['input'])
+                info['linesLength'] = linesLength
+                if start == 0:
+                    info['startIndex'] = 0
+                else:
+                    info['startIndex'] = start
+                start = start + linesLength
+                info['lines'] = lines
+                list_result.append(info)
+
         if types == "c":
             self.currentMapPath = self.savePath+"/New/"+self.currentIndex+"#"+str(self.index)+"#"+types+".txt"
         else:
@@ -287,9 +300,7 @@ class Files:
         child = mapFile(self.currentMapPath)
 
         diff = [ list(map(lambda x: x,x.split(","))) for x in diff if "," in x ]
-
         diff = [ [str(child.block(i[0])),str(parent.block(i[1])),str(i[2] if len(i) == 3 else 1)] for i in diff ]
-
         diff = [ [i[0],i[1], i[2] if i[1] != "_" else "0"] for i in diff]
 
         with open(self.savePath+"/Map/"+self.currentIndex+"#"+str(self.index)+".txt","w") as text:
