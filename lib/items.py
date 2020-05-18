@@ -1,21 +1,28 @@
 from tkinter import *
+import tkinter as tk
 
 from lib.map_block import MapBlock
-from lib.ViewJupyter import ViewJupyter
 
+block_width = 400
+block_gap_v = 10
+block_gap_h = 60
+
+line_gap_v = 15
+line_gap_h = 10
+line_height =  20
+line_width = 380
+
+
+text_gap_v = 5
+text_gap_h = 5
 
 class vs(Canvas):
 
     def __init__(self, parent,mp):
         Canvas.__init__(self, parent)
-        self.config(bg="green")
+        self.config(bg="green",width=700)
 
-        self.ViewJ = ViewJupyter(mp)
-        self.ViewJ.run()
         self._main_process(mp)
-
-
-
 
     def _main_process(self,mp):
 
@@ -41,7 +48,7 @@ class vs(Canvas):
 
         self._create_merge_type_block()
 
-        self._create_line()
+        # self._create_line()
 
 
 
@@ -50,17 +57,21 @@ class vs(Canvas):
         self.childBlock = []
         h = 0
         for information in self.childFile:
-            a = Block(self,information,h,"c")
+            a = self.Block(self,information,h,"c")
+            a.create()
             self.childBlock.append(a)
             h = a.y2
+
 
 
         self.parentBlock = []
         h = 0
         for information in self.parentFile:
-            a = Block(self,information,h,"p")
+            a = self.Block(self,information,h,"p")
+            a.create()
             self.parentBlock.append(a)
             h = a.y2
+
 
     def _create_line(self):
 
@@ -106,93 +117,108 @@ class vs(Canvas):
         print("get in **** ")
         print(self.mp)
         for _ in range(3):
-            self.ViewJ.refresh(self.mp)
             self._main_process(mp)
 
 
 
-class Block:
+    class Block:
 
-    def __init__(self,vs,info,ph,type):
-        self._width = 100
-        self._gap_v = 10
-        self._gap_h = 60
+        def __init__(self,vs,info,ph,type):
 
-        self.block = info["block"] + 1
+            self.vs = vs
 
-        self.lines = []
+            self.block = info["block"] + 1
 
-        self.type = type
+            self.lines = []
 
-        self.height = len(info["lines"])*10 + (len(info["lines"]) -1)*15+ 2*10 +ph
+            self.type = type
 
-        if self.type == "c":
-
-            #self.height = len(info["lines"])*10 + (len(info["lines"]) -1)*15+ 2*10 +ph
-            self.x1 = 10
-            self.x2 = self.x1 + self._width
-            self.y1 = ph+self._gap_v
-            self.y2 = self.height
             self.tags = self.type +","+str(self.block)
 
-        else:
+            self.ph = ph
 
-            #self.height = len(info["lines"])*30 + ph
-            self.x1 = 10+self._width+self._gap_h
-            self.x2 =  self.x1 + self._width
-            self.y1 = ph+self._gap_v
+            def show(*args):
+                print(self.tags)
+                for i in info["lines"]:
+                    print(i)
+                print("-----")
+
+            vs.tag_bind(self.tags,"<Button-1>",show)
+
+            if self.type == "c":
+                # self.x1 = 10
+                self.x1 = 0
+            else:
+                # self.x1 = 10+block_width+block_gap_h
+                self.x1 = block_width+block_gap_h
+            start_h = self.ph
+            for i in range(len(info["lines"])):
+                a = self.Line(vs,self,info["lines"][i],start_h,i)
+                self.lines.append(a)
+                start_h = a.y2
+
+
+            self.end_h = start_h
+
+        def create_coordinate(self):
+            self.height = self.end_h + block_gap_v
+
+            self.x2 =  self.x1 + block_width
+            self.y1 = self.ph+block_gap_v
             self.y2 = self.height
-            self.tags = self.type +","+str(self.block)
 
-        vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
+        def create(self):
 
-        def show(*args):
-            print(self.tags)
-            for i in info["lines"]:
-                print(i)
-            print("-----")
-            vs.ViewJ.color_block(self.block,self.type)
+            self.create_coordinate()
+            self.vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
 
+            for line in self.lines:
+                line.create()
 
-        vs.tag_bind(self.tags,"<Button-1>",show)
-
-        start_h = ph
-        for i in range(len(info["lines"])):
-            a = Line(vs,self,info["lines"][i],start_h,i)
-            self.lines.append(a)
-            start_h = a.y2
-
-        vs.pack(fill=BOTH, expand=YES)
+            self.vs.pack(fill=BOTH, expand=YES)
 
 
-class Line:
+        class Line:
 
-    def __init__(self,vs,block,info,start_h,index):
+            def __init__(self,vs,block,info,start_h,index):
 
-        def show(*args):
-            print(self.tags)
-            print(info)
-            print("-----")
+                def show(*args):
+                    print(self.tags)
+                    print(info)
+                    print("-----")
 
-        self._gap_v = 15
-        self._gap_h = 10
+                self.vs = vs
 
-        self._height =  10
-        self._width = 80
+                self.index = index + 1
 
-        self.index = index + 1
-
-        self.x1 = block.x1+self._gap_h
-        self.x2 = self.x1 + self._width
-        self.y1 = start_h+self._gap_v
-        self.y2 = self._gap_v + start_h + self._height
-
-        alist = [block.type,block.block,index]
-        self.tags = ",".join([str(i) for i in alist])
-
-        self.rectangle = vs.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red",tags=self.tags)
-
-        vs.tag_bind(self.tags,"<Button-1>",show)
+                self.x1 = block.x1+line_gap_h
+                self.x2 = self.x1 + line_width
+                self.y1 = start_h+line_gap_v
+                self.y2 = line_gap_v + start_h + line_height
+                size_length = 1
+                if len(info) >= 1:
+                    self.y2 += (len(info) // 50) * line_height
 
 
-        vs.pack(fill=BOTH, expand=YES)
+
+                alist = [block.type,block.block,index]
+                self.tags = ",".join([str(i) for i in alist])
+
+                self.info = info
+
+                # self.rectangle = vs.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red",tags=self.tags)
+
+                vs.tag_bind(self.tags,"<Button-1>",show)
+
+                # vs.pack(fill=BOTH, expand=YES)
+
+            def create(self):
+
+                self.vs.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
+
+
+                print(self.info)
+                print("*********")
+                text = self.vs.create_text(self.x1+text_gap_h,self.y1+text_gap_v,font=("Purisa", 10), anchor='nw',text=self.info,width=line_width-text_gap_h)
+                print(text)
+                print("$$$$$$$")

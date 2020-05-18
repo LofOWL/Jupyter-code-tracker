@@ -28,8 +28,10 @@ class Tool:
         self._init_vs()
 
     def _init_root(self):
-        self.screen_height = self.root.winfo_screenheight()
-        self.root.geometry("300x"+str(self.screen_height))
+        # self.screen_height = self.root.winfo_screenheight()
+        # self.root.geometry("300x"+str(self.screen_height))
+
+        self.root.attributes('-zoomed', True)
 
     def _init_box(self):
         def alist():
@@ -63,16 +65,15 @@ class Tool:
         mp = Map(self.currentId,self.path)
         self.canvas = vs(self.root,mp)
 
-        frame=Frame(self.root,width=200,height=self.screen_height)
-        frame.pack(expand=True, fill=BOTH)
-
-        self.vbar=Scrollbar(frame,orient=VERTICAL)
+        self.vbar=Scrollbar(self.root,orient=VERTICAL)
         self.vbar.pack(side=RIGHT,fill=Y)
         self.vbar.config(command=self.canvas.yview)
 
         self.canvas.configure(scrollregion = self.canvas.bbox("all"))
         self.canvas.config(yscrollcommand=self.vbar.set)
+
         self.canvas.pack(side=LEFT,expand=True,fill=BOTH)
+        # self.canvas.pack(side=LEFT,expand=False)
 
     def run(self):
         self.root.mainloop()
