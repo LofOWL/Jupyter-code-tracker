@@ -3,14 +3,18 @@ import tkinter as tk
 
 from lib.map_block import MapBlock
 
-block_width = 400
+block_width = 420
 block_gap_v = 10
 block_gap_h = 60
 
 line_gap_v = 15
 line_gap_h = 10
-line_height =  20
+line_height = 25
 line_width = 380
+
+line_index_block_length = 15
+line_index_block_width = 15
+line_index_block_height = 15
 
 
 text_gap_v = 5
@@ -127,13 +131,13 @@ class vs(Canvas):
 
             self.vs = vs
 
-            self.block = info["block"] + 1
+            self.block_index = info["block"] + 1
 
             self.lines = []
 
             self.type = type
 
-            self.tags = self.type +","+str(self.block)
+            self.tags = self.type +","+str(self.block_index)
 
             self.ph = ph
 
@@ -152,6 +156,7 @@ class vs(Canvas):
                 # self.x1 = 10+block_width+block_gap_h
                 self.x1 = block_width+block_gap_h
             start_h = self.ph
+
             for i in range(len(info["lines"])):
                 a = self.Line(vs,self,info["lines"][i],start_h,i)
                 self.lines.append(a)
@@ -169,8 +174,22 @@ class vs(Canvas):
 
         def create(self):
 
+            # create rectangle
             self.create_coordinate()
             self.vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
+
+            # create index block rectangle
+            index_x1 = self.x1 + text_gap_h
+            index_y1 = self.y1 + text_gap_v
+            index_x2 = index_x1 + line_index_block_width
+            index_y2 = index_y1 + line_index_block_height
+            self.vs.create_rectangle(index_x1,index_y1,index_x2,index_y2,fill="white")
+
+            # create index block
+            index_text_x = index_x1 + line_index_block_width // 2
+            index_text_y = index_y1 + line_index_block_height // 2
+            self.vs.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.block_index)
+
 
             for line in self.lines:
                 line.create()
@@ -189,19 +208,19 @@ class vs(Canvas):
 
                 self.vs = vs
 
-                self.index = index + 1
+                self.line_index = index + 1
 
-                self.x1 = block.x1+line_gap_h
+                self.x1 = block.x1++line_index_block_width+line_gap_h
                 self.x2 = self.x1 + line_width
                 self.y1 = start_h+line_gap_v
-                self.y2 = line_gap_v + start_h + line_height
+                self.y2 = self.y1 + line_height
                 size_length = 1
                 if len(info) >= 1:
                     self.y2 += (len(info) // 50) * line_height
 
 
 
-                alist = [block.type,block.block,index]
+                alist = [block.type,block.block_index,index]
                 self.tags = ",".join([str(i) for i in alist])
 
                 self.info = info
@@ -214,11 +233,23 @@ class vs(Canvas):
 
             def create(self):
 
+                # create text line rectangle
                 self.vs.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
 
+                # create index rectangle
+                index_x1 = self.x1+text_gap_h
+                index_y1 = self.y1+text_gap_v
+                index_x2 = index_x1 + line_index_block_width
+                index_y2 = index_y1 + line_index_block_height
+                self.vs.create_rectangle(index_x1,index_y1,index_x2,index_y2,fill="white")
 
-                print(self.info)
-                print("*********")
-                text = self.vs.create_text(self.x1+text_gap_h,self.y1+text_gap_v,font=("Purisa", 10), anchor='nw',text=self.info,width=line_width-text_gap_h)
-                print(text)
-                print("$$$$$$$")
+                # create index text
+                index_text_x = index_x1 + line_index_block_width // 2
+                index_text_y = index_y1 + line_index_block_height // 2
+                self.vs.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.line_index)
+
+                # create text
+                text_x = index_x2 + text_gap_h
+                text_y = self.y1 + text_gap_v
+                text_width = line_width - text_gap_h - line_index_block_width - text_gap_h
+                text = self.vs.create_text(text_x,text_y,font=("Purisa", 10), anchor='nw',text=self.info,width=text_width)
