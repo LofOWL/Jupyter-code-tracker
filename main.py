@@ -18,11 +18,15 @@ class Tool:
         self.path = path
 
         self._init_root()
+
+        # create upper bar 
         self.shaListBox = None
         self.data = None
         self.currentId = None
         self._init_box()
         self._init_button()
+
+        # create vs canvas
         self.canvas = None
         self.vbar = None
         self._init_vs()

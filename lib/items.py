@@ -3,6 +3,8 @@ import tkinter as tk
 
 from lib.map_block import MapBlock
 
+from lib.state_bar.state_bar import StateBar
+
 block_width = 420
 block_gap_v = 10
 block_gap_h = 60
@@ -44,17 +46,22 @@ class vs(Canvas):
         self.line_widget = []
         self.block_widget = []
 
+        # create left children block and right parent block
         self._draw_two_notebook_block()
 
-        self._create_block()
+        # create state StateBar
+        self._draw_state_bar()
 
-        self._create_split_type_block()
+        # show the total mapping
+        self._mapping_total_block()
 
-        self._create_merge_type_block()
+        # show the split mapping
+        self._mapping_split_type_block()
+
+        # show the merge mapping
+        self._mapping_merge_type_block()
 
         # self._create_line()
-
-
 
     def _draw_two_notebook_block(self):
 
@@ -76,6 +83,11 @@ class vs(Canvas):
             self.parentBlock.append(a)
             h = a.y2
 
+    def _draw_state_bar(self):
+        x1 = block_width+block_gap_h+block_width+10
+        self.StateBar = StateBar(x1 = x1,vs = self, mp =self.mp)
+
+
 
     def _create_line(self):
 
@@ -90,7 +102,7 @@ class vs(Canvas):
                 self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
 
 
-    def _create_block(self):
+    def _mapping_total_block(self):
 
         a = MapBlock(self.mp)
         for i in a.type_total():
@@ -98,7 +110,7 @@ class vs(Canvas):
             parent = self.parentBlock[i[1]-1]
             self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='#808080')
 
-    def _create_split_type_block(self):
+    def _mapping_split_type_block(self):
         a = MapBlock(self.mp)
 
         for i in a.type_split():
@@ -107,7 +119,7 @@ class vs(Canvas):
                 parent = self.parentBlock[j-1]
                 self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='blue')
 
-    def _create_merge_type_block(self):
+    def _mapping_merge_type_block(self):
         a = MapBlock(self.mp)
 
         for i in a.type_merge():
