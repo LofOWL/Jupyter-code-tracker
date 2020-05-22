@@ -19,7 +19,7 @@ class Tool:
 
         self._init_root()
 
-        # create upper bar 
+        # create upper bar
         self.shaListBox = None
         self.data = None
         self.currentId = None
