@@ -8,6 +8,11 @@ class MapBlock:
 
     def __init__ (self,mp):
         self.lines = mp
+
+        self.child_info = mp.childFile
+        self.parent_info = mp.parentFile
+
+        print(self.child_info.data)
         self.data = self.lines.formatData()
 
         self.child_block = dict(Counter([ i.child.block for i in self.data if i.child.exist]))
@@ -48,7 +53,7 @@ class MapBlock:
 
     def type_merge(self):
         blockmap = Block(self.data)
-
+        print(self.data[0].data)
         split_block = []
         for i in self.parent_block_first_line:
             p_block = i.parent.block

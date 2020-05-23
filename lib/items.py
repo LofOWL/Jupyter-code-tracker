@@ -153,9 +153,11 @@ class vs(Canvas):
 
             self.ph = ph
 
+            self.info = info
+
             def show(*args):
                 print(self.tags)
-                for i in info["lines"]:
+                for i in self.info["lines"]:
                     print(i)
                 print("-----")
 
@@ -188,8 +190,10 @@ class vs(Canvas):
 
             # create rectangle
             self.create_coordinate()
-            self.vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
-
+            if self.info["type"] == "code":
+                self.vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
+            else:
+                self.vs.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="blue",tags=self.tags)
             # create index block rectangle
             index_x1 = self.x1 + text_gap_h
             index_y1 = self.y1 + text_gap_v
@@ -212,6 +216,7 @@ class vs(Canvas):
         class Line:
 
             def __init__(self,vs,block,info,start_h,index):
+
 
                 def show(*args):
                     print(self.tags)

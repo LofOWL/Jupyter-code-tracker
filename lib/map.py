@@ -111,6 +111,11 @@ class NewFile:
         self.interval=result
         self.totalLength = sum([ i["linesLength"] for i in self.data])
 
+    def line(self,block,line):
+        data =self.data[block]
+        return data["lines"][line]
+
+
     def block(self,index):
         if index == "_":
             return "_"
