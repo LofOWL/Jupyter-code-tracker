@@ -63,18 +63,7 @@ class MapBlock:
                                 map_parent.append(int(parent.parent.block))
         if len(set(map_parent)) >= 2:
             split_block.append([current_block_index,set(map_parent)])
-        print("new")
-        print(split_block)
 
-        # blockmap = Block(self.data)
-        # split_block = []
-        # for i in self.child_block_first_line:
-        #     c_block = i.child.block
-        #     bp = blockmap.mapChildParent(c_block)
-        #     if len(bp) > 1:
-        #         split_block.append([c_block,bp])
-        # print("old")
-        # print(split_block)
         return split_block
 
     def type_merge(self):
@@ -89,7 +78,6 @@ class MapBlock:
         child_exist = [i for i in self.data if i.child.exist]
         parent_exist = [i for i in self.data if i.parent.exist]
         for mapformat in parent_exist:
-            print(mapformat.data)
             if current_block_index != mapformat.parent.block:
 
                 if len(set(map_parent)) >= 2:
@@ -110,19 +98,6 @@ class MapBlock:
         if len(set(map_parent)) >= 2:
             merge_block.append([set(map_parent),current_block_index])
 
-        # print("new mrege")
-        # print(merge_block)
-        #
-        # blockmap = Block(self.data)
-        # merge_block = []
-        # for i in self.parent_block_first_line:
-        #     p_block = i.parent.block
-        #     bp = blockmap.mapParentChild(p_block)
-        #     if len(bp) > 1:
-        #         merge_block.append([bp,p_block])
-        #
-        # print("old mrege")
-        # print(merge_block)
         return merge_block
 
 

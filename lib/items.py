@@ -116,8 +116,6 @@ class vs(Canvas):
         a = MapBlock(self.mp)
 
         for i in a.type_split():
-            print("in items")
-            print(i)
             child = self.childBlock[i[0]-1]
             for j in i[1]:
                 parent = self.parentBlock[j-1]
@@ -180,8 +178,11 @@ class vs(Canvas):
                 self.lines.append(a)
                 start_h = a.y2
 
+            if len(info["lines"]) != 0:
+                self.end_h = start_h
+            else:
+                self.end_h = self.ph + block_gap_h
 
-            self.end_h = start_h
 
         def create_coordinate(self):
             self.height = self.end_h + block_gap_v
