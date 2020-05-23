@@ -7,13 +7,11 @@ import os
 class MapBlock:
 
     def __init__ (self,mp):
-        self.lines = mp
-
+        self.mp = mp
         self.child_info = mp.childFile
         self.parent_info = mp.parentFile
 
-        print(self.child_info.data)
-        self.data = self.lines.formatData()
+        self.data = self.mp.formatData()
 
         self.child_block = dict(Counter([ i.child.block for i in self.data if i.child.exist]))
         self.parent_block = dict(Counter([ i.parent.block for i in self.data if i.parent.exist]))
@@ -40,28 +38,92 @@ class MapBlock:
         return map_block
 
     def type_split(self):
-        blockmap = Block(self.data)
-
         split_block = []
-        for i in self.child_block_first_line:
-            c_block = i.child.block
-            bp = blockmap.mapChildParent(c_block)
-            if len(bp) > 1:
-                split_block.append([c_block,bp])
 
+        current_block_index = 1
+        map_parent = []
+
+        child_exist = [i for i in self.data if i.child.exist]
+        parent_exist = [i for i in self.data if i.parent.exist]
+        for mapformat in child_exist:
+            if current_block_index != mapformat.child.block:
+
+                if len(set(map_parent)) >= 2:
+                    split_block.append([current_block_index,set(map_parent)])
+
+                current_block_index = mapformat.child.block
+                map_parent = []
+            else:
+                block = mapformat.child.block - 1
+                line = mapformat.child.line - 1
+                word = self.child_info.line(block,line)
+                if word != '\n':
+                    for parent in parent_exist:
+                        if mapformat.child.block == parent.child.block and mapformat.child.line == parent.child.line:
+                                map_parent.append(int(parent.parent.block))
+        if len(set(map_parent)) >= 2:
+            split_block.append([current_block_index,set(map_parent)])
+        print("new")
+        print(split_block)
+
+        # blockmap = Block(self.data)
+        # split_block = []
+        # for i in self.child_block_first_line:
+        #     c_block = i.child.block
+        #     bp = blockmap.mapChildParent(c_block)
+        #     if len(bp) > 1:
+        #         split_block.append([c_block,bp])
+        # print("old")
+        # print(split_block)
         return split_block
 
     def type_merge(self):
-        blockmap = Block(self.data)
-        print(self.data[0].data)
-        split_block = []
-        for i in self.parent_block_first_line:
-            p_block = i.parent.block
-            bp = blockmap.mapParentChild(p_block)
-            if len(bp) > 1:
-                split_block.append([bp,p_block])
+        merge_block = []
 
-        return split_block
+        current_block_index = 1
+        map_parent = []
+
+        self.mp.sortbyParent()
+        self.data = self.mp.formatData()
+
+        child_exist = [i for i in self.data if i.child.exist]
+        parent_exist = [i for i in self.data if i.parent.exist]
+        for mapformat in parent_exist:
+            print(mapformat.data)
+            if current_block_index != mapformat.parent.block:
+
+                if len(set(map_parent)) >= 2:
+                    merge_block.append([set(map_parent),current_block_index])
+
+                current_block_index = mapformat.parent.block
+                map_parent = []
+            else:
+                block = mapformat.parent.block - 1
+                line = mapformat.parent.line - 1
+                word = self.parent_info.line(block,line)
+
+                if word != '\n':
+                    for child in child_exist:
+                        if mapformat.parent.block == child.parent.block and mapformat.parent.line == child.parent.line:
+                                map_parent.append(int(child.child.block))
+
+        if len(set(map_parent)) >= 2:
+            merge_block.append([set(map_parent),current_block_index])
+
+        # print("new mrege")
+        # print(merge_block)
+        #
+        # blockmap = Block(self.data)
+        # merge_block = []
+        # for i in self.parent_block_first_line:
+        #     p_block = i.parent.block
+        #     bp = blockmap.mapParentChild(p_block)
+        #     if len(bp) > 1:
+        #         merge_block.append([bp,p_block])
+        #
+        # print("old mrege")
+        # print(merge_block)
+        return merge_block
 
 
 class Block:

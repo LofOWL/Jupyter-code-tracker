@@ -59,9 +59,9 @@ class vs(Canvas):
         self._mapping_split_type_block()
 
         # show the merge mapping
-        self._mapping_merge_type_block()
+        # self._mapping_merge_type_block()
 
-        # self._create_line()
+        self._create_line()
 
     def _draw_two_notebook_block(self):
 
@@ -85,7 +85,8 @@ class vs(Canvas):
 
     def _draw_state_bar(self):
         x1 = block_width+block_gap_h+block_width+10
-        self.StateBar = StateBar(x1 = x1,vs = self, mp =self.mp)
+        a = MapBlock(self.mp)
+        self.StateBar = StateBar(x1 = x1,vs = self, mapblock=a)
 
 
 
@@ -95,11 +96,12 @@ class vs(Canvas):
             if i.exist:
 
                 #child = self.childBlock[i.child.block-1].lines[i.child.line-1]
-                child = [ j for j in self.childBlock[i.child.block-1].lines if j.index == i.child.line][0]
+                child = [ j for j in self.childBlock[i.child.block-1].lines if j.line_index == i.child.line][0]
                 #parent = self.parentBlock[i.parent.block-1].lines[i.parent.line-1]
-                parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.index == i.parent.line][0]
+                parent =[ j for j in  self.parentBlock[i.parent.block-1].lines if j.line_index == i.parent.line][0]
 
-                self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
+                if child.info != '\n':
+                    self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
 
 
     def _mapping_total_block(self):
@@ -114,6 +116,8 @@ class vs(Canvas):
         a = MapBlock(self.mp)
 
         for i in a.type_split():
+            print("in items")
+            print(i)
             child = self.childBlock[i[0]-1]
             for j in i[1]:
                 parent = self.parentBlock[j-1]

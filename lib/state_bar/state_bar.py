@@ -16,8 +16,8 @@ class StateBar:
         self.vs = kwg["vs"]
 
         # mapping filter
-        self.mp = kwg["mp"]
-        self.mapblock = None
+        self.mp = self.vs.mp
+        self.mapblock = kwg["mapblock"]
 
         # coordinate
         self.x1 = kwg["x1"]
@@ -28,18 +28,12 @@ class StateBar:
 
         # self.vs.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="blue")
 
-        # generate the map block
-        self._generate()
 
         # generate the map
-        self.mapstate = MapState(self)
+        # self.mapstate = MapState(self)
 
         # generate the split
         self.splitstate = SplitState(self)
 
         # generate the merge
         self.mergestate = MergeState(self)
-
-
-    def _generate(self):
-        self.mapblock = MapBlock(self.mp.formatData())

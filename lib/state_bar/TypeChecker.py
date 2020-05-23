@@ -41,14 +41,32 @@ class MapBlock:
         return map_block,map_block_100,map_block_90
 
     def type_split(self):
-        blockmap = Block(self.data)
-
         split_block = []
-        for i in self.child_block_first_line:
-            c_block = i.child.block
-            bp = blockmap.mapChildParent(c_block)
-            if len(bp) > 1:
-                split_block.append([c_block,bp])
+
+        current_block_index = 1
+        map_parent = []
+
+        child_exist = [i for i in self.data if i.child.exist]
+        for mapformat in child_exist:
+            if current_block_index != mapformat.child.block:
+
+                if len(set(map_parent)) >= 2:
+                    split_block.append([current_block_index,set(map_parent)])
+
+                current_block_index = mapformat.child.block
+                map_parent = []
+            else:
+                block = mapformat.child.block - 1
+                line = mapformat.child.line - 1
+                word = self.child_info.line(block,line)
+                print(mapformat.data)
+                print(set(word))
+                if word != '\n':
+                    map_parent.append(int(mapformat.parent.block))
+        if len(set(map_parent)) >= 2:
+            split_block.append([current_block_index,set(map_parent)])
+        print("new")
+        print(split_block)
 
         return split_block
 
