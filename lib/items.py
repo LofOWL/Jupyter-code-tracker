@@ -149,7 +149,7 @@ class vs(Canvas):
             for j in i[0]:
                 child = self.childBlock[j-1]
                 child_mid = (child.y1 +child.y2) // 2
-                self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill='red')
+                self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill='blue')
 
     def refresh(self,mp):
         self.delete("all")

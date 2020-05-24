@@ -75,6 +75,12 @@ class Block:
         self.type_split = self.parent.type_split
         self.type_merge = self.parent.type_merge
 
+        print(self.type_total_100)
+        print(self.type_total_90)
+        print(self.type_split)
+        print(self.type_merge)
+        print(self.block_index)
+
         index = 0 if self.type == "c" else 1
         for i in self.type_total_100:
             if type(i[index]) == int:
@@ -82,35 +88,37 @@ class Block:
                     return "total_100","grey"
             else:
                 for j in i[index]:
-                    if self.block_index ==j:
+                    if self.block_index == j:
                         return "total_100","grey"
+
+        print("not pass")
 
         for i in self.type_total_90:
             if type(i[index]) == int:
                 if self.block_index == i[index]:
-                    return "total_100","grey"
+                    return "total_90","blue"
             else:
                 for j in i[index]:
                     if self.block_index == j:
-                        return "total_100","grey"
+                        return "total_90","blue"
 
         for i in self.type_split:
             if type(i[index]) == int:
                 if self.block_index == i[index]:
-                    return "total_100","grey"
+                    return "split","blue"
             else:
                 for j in i[index]:
                     if self.block_index == j:
-                        return "total_100","grey"
+                        return "split","blue"
 
         for i in self.type_merge:
             if type(i[index]) == int:
                 if self.block_index == i[index]:
-                    return "total_100","grey"
+                    return "merge","blue"
             else:
                 for j in i[index]:
                     if self.block_index == j:
-                        return "total_100","grey"
+                        return "merge","blue"
 
 
         if self.type == "c":
@@ -133,7 +141,10 @@ class Block:
 
         # create rectangle
         self.create_coordinate()
-        self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=block_color,tags=self.tags)
+        if block_color == "blue":
+            self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=block_color,tags=self.tags)
+        else:
+            self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=block_color)
 
         # create index block rectangle
         index_x1 = self.x1 + text_gap_h
