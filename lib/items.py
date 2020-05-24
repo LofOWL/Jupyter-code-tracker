@@ -19,6 +19,9 @@ class vs(Canvas):
 
         self.mp = mp
 
+        for i in self.mp.data:
+            print(i)
+
         self.parentFile = mp.parentFile.data
 
         self.childFile = mp.childFile.data
