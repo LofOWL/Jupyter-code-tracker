@@ -158,6 +158,19 @@ class Block:
         index_text_y = index_y1 + line_index_block_height // 2
         self.parent.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.block_index)
 
+        # create block and makdown type
+        type_x1 = index_x1
+        type_y1 = index_y2
+        type_x2 = type_x1 + line_index_block_width
+        type_y2 = type_y1 + line_index_block_height
+        type_color = "red" if self.info["type"] == "code" else "blue"
+        self.parent.create_rectangle(type_x1,type_y1,type_x2,type_y2,fill=type_color)
+
+        # create type text
+        type_text_x = type_x1 + line_index_block_width // 2
+        type_text_y = type_y1 + line_index_block_height // 2
+        block_type = "c" if self.info["type"] == "code" else "m"
+        self.parent.create_text(type_text_x,type_text_y,fill="white",font=("Purisa",10),anchor='c',text=block_type)
 
         for line in self.lines:
             line.create()

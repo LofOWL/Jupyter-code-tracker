@@ -10,6 +10,11 @@ width = 90
 line_width =  15
 line_height = 15
 
+text_color = "white"
+parent_block_color = "blue"
+child_block_color = "blue"
+
+
 class SplitState:
 
 
@@ -60,12 +65,12 @@ class SplitState:
             first_y1 = self.y1
             first_x2 = first_x1 + line_width
             first_y2 = first_y1 + line_height
-            self.parent.parent.vs.create_rectangle(first_x1,first_y1,first_x2,first_y2,fill="white")
+            self.parent.parent.vs.create_rectangle(first_x1,first_y1,first_x2,first_y2,fill="blue")
 
             #index
             index_text_x = first_x1 + line_width // 2
             index_text_y = first_y1 + line_height // 2
-            self.parent.parent.vs.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.data[0])
+            self.parent.parent.vs.create_text(index_text_x,index_text_y,fill=text_color,font=("Purisa",10),anchor='c',text=self.data[0])
 
             #parent_index
             start_y1 = self.y1
@@ -75,18 +80,18 @@ class SplitState:
                 parent_y1 = start_y1
                 parent_x2 = parent_x1 + line_width
                 parent_y2 = parent_y1 + line_height
-                self.parent.parent.vs.create_rectangle(parent_x1,parent_y1,parent_x2,parent_y2,fill="red")
+                self.parent.parent.vs.create_rectangle(parent_x1,parent_y1,parent_x2,parent_y2,fill=parent_block_color)
 
                 #index
                 index_text_x = parent_x1 + line_width // 2
                 index_text_y = parent_y1 + line_height // 2
-                self.parent.parent.vs.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=parent_block)
+                self.parent.parent.vs.create_text(index_text_x,index_text_y,fill=text_color,font=("Purisa",10),anchor='c',text=parent_block)
 
                 #create lines
                 first_mid_y = (first_y1 + first_y2) // 2
 
                 parent_mid_y = (parent_y1 + parent_y2) // 2
-                self.parent.parent.vs.create_line(first_x2,first_mid_y,parent_x1,parent_mid_y,fill="black",width=1)
+                self.parent.parent.vs.create_line(first_x2,first_mid_y,parent_x1,parent_mid_y,fill=child_block_color,width=1)
                 start_y1 = parent_y2 + 10
 
             self.end_y = start_y1
