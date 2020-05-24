@@ -35,7 +35,7 @@ class Tool:
         # self.screen_height = self.root.winfo_screenheight()
         # self.root.geometry("300x"+str(self.screen_height))
 
-        self.root.attributes('-zoomed', True)
+        self.root.attributes('-fullscreen', True)
 
     def _init_box(self):
         def alist():
