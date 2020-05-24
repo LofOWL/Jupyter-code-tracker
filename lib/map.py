@@ -19,7 +19,7 @@ class Map:
         self.childFile = NewFile(self.path+"/New/"+name+"#c.txt")
         self.parentFile = NewFile(self.path+"/New/"+name+"#p.txt")
 
-        with open(self.path+"/Map/"+name,'r') as file:
+        with open(self.path+"/Map/"+name+".txt",'r') as file:
             self.data = file.read()
             self.data = self.data.split("\n")[:-1]
 
