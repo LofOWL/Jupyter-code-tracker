@@ -16,13 +16,13 @@ class MergeState:
     def __init__(self,parent):
 
         self.parent = parent
-        self.data = self.parent.mapblock.type_merge()
-        print(self.data)
+        self.data = self.parent.mergedata
+
         self.create()
 
 
     def create(self):
-
+        print("get in merge create")
         # coordiante
         self.x1 = self.parent.x1
         self.y1 = self.parent.splitstate.y2 + 10

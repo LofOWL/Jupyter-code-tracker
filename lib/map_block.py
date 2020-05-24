@@ -3,8 +3,11 @@ from collections import Counter
 import pandas as pd
 import os
 
+from lib.state_bar.tool import group
 
 class MapBlock:
+    child = "c"
+    parent = "p"
 
     def __init__ (self,mp):
         self.mp = mp
@@ -19,11 +22,37 @@ class MapBlock:
         self.child_block_first_line = [ i for i in self.data if i.child.exist and i.child.line == 1]
         self.parent_block_first_line = [ i for i in self.data if i.parent.exist and i.parent.line == 1]
 
+    def map_block(self,input_block,type):
+        if type == "c":
+            result = []
+            for mp in self.data:
+                if mp.child.block == input_block and mp.parent.exist:
+                    block = mp.child.block - 1
+                    line = mp.child.line - 1
+                    word = self.child_info.line(block,line)
+                    if word != '\n':
+                        result.append(mp)
+            return result
+        else:
+            result = []
+            for mp in self.data:
+                if mp.parent.block == input_block and mp.child.exist:
+                    block = mp.parent.block - 1
+                    line = mp.parent.line - 1
+                    word = self.parent_info.line(block,line)
+                    if word != '\n':
+                        result.append(mp)
+            return result
+
+
     def type_total(self):
 
         blockmap = Block(self.data)
+        tool = group(self.data)
 
         map_block = []
+        map_block_100 = []
+        map_block_90 = []
         for i in self.child_block_first_line:
             if i.child.exist and i.parent.exist:
                 c_block = i.child.block
@@ -34,8 +63,13 @@ class MapBlock:
                     bp = blockmap.mapChildParent(c_block)
                     if len(bp) == 1:
                         map_block.append([c_block,p_block])
+                        count_pro = tool.group(i.child.block)
+                        if count_pro == len_child_block:
+                            map_block_100.append([c_block,p_block])
+                        else:
+                            map_block_90.append([c_block,p_block])
+        return map_block,map_block_100,map_block_90
 
-        return map_block
 
     def type_split(self):
         split_block = []

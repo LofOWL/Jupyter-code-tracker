@@ -4,29 +4,14 @@ import tkinter as tk
 from lib.map_block import MapBlock
 
 from lib.state_bar.state_bar import StateBar
+from lib.item.Block import Block
 
-block_width = 420
-block_gap_v = 10
-block_gap_h = 60
-
-line_gap_v = 15
-line_gap_h = 10
-line_height = 25
-line_width = 380
-
-line_index_block_length = 15
-line_index_block_width = 15
-line_index_block_height = 15
-
-
-text_gap_v = 5
-text_gap_h = 5
 
 class vs(Canvas):
 
     def __init__(self, parent,mp):
         Canvas.__init__(self, parent)
-        self.config(bg="green",width=700)
+        self.config(bg="white",width=700)
 
         self._main_process(mp)
 
@@ -46,6 +31,9 @@ class vs(Canvas):
         self.line_widget = []
         self.block_widget = []
 
+        # create mppaing block type information
+        self._block_type_information()
+
         # create left children block and right parent block
         self._draw_two_notebook_block()
 
@@ -53,22 +41,39 @@ class vs(Canvas):
         self._draw_state_bar()
 
         # show the total mapping
-        self._mapping_total_block()
+        self._mapping_total_100_block()
+
+        # show the total 90 mapping
+        self._mapping_total_90_block()
 
         # show the split mapping
         self._mapping_split_type_block()
 
         # show the merge mapping
-        # self._mapping_merge_type_block()
+        self._mapping_merge_type_block()
 
-        self._create_line()
+        # create line from line to line
+        # self._create_line()/
+
+
+
+    def _block_type_information(self):
+
+        get = MapBlock(self.mp)
+
+        self.type_total,self.type_total_100,self.type_total_90 = get.type_total()
+
+        self.type_split = get.type_split()
+
+        self.type_merge = get.type_merge()
+
 
     def _draw_two_notebook_block(self):
 
         self.childBlock = []
         h = 0
         for information in self.childFile:
-            a = self.Block(self,information,h,"c")
+            a = Block(self,information,h,"c")
             a.create()
             self.childBlock.append(a)
             h = a.y2
@@ -78,13 +83,13 @@ class vs(Canvas):
         self.parentBlock = []
         h = 0
         for information in self.parentFile:
-            a = self.Block(self,information,h,"p")
+            a = Block(self,information,h,"p")
             a.create()
             self.parentBlock.append(a)
             h = a.y2
 
     def _draw_state_bar(self):
-        x1 = block_width+block_gap_h+block_width+10
+        x1 = Block.block_width+Block.block_gap_h+Block.block_width+10
         a = MapBlock(self.mp)
         self.StateBar = StateBar(x1 = x1,vs = self, mapblock=a)
 
@@ -104,174 +109,50 @@ class vs(Canvas):
                     self.line_widget.append(self.create_line(child.x2,child.y2-5,parent.x1,parent.y2-5,fill="black",width=3))
 
 
-    def _mapping_total_block(self):
+    def _mapping_total_100_block(self):
 
-        a = MapBlock(self.mp)
-        for i in a.type_total():
+        for i in self.type_total_100:
             child = self.childBlock[i[0]-1]
             parent = self.parentBlock[i[1]-1]
-            self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='#808080')
+
+            child_mid = (child.y1+child.y2) // 2
+            parent_mid = (parent.y1 + parent.y2) // 2
+
+            self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill='#808080')
+
+    def _mapping_total_90_block(self):
+        for i in self.type_total_90:
+            child = self.childBlock[i[0]-1]
+            parent = self.parentBlock[i[1]-1]
+
+            child_mid = (child.y1+child.y2) // 2
+            parent_mid = (parent.y1 + parent.y2) // 2
+
+            self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill='#808080')
 
     def _mapping_split_type_block(self):
-        a = MapBlock(self.mp)
 
-        for i in a.type_split():
+        for i in self.type_split:
             child = self.childBlock[i[0]-1]
+            child_mid = (child.y1 +child.y2) // 2
             for j in i[1]:
                 parent = self.parentBlock[j-1]
-                self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='blue')
+                parent_mid = (parent.y1 + parent.y2) //2
+                self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill='blue')
 
     def _mapping_merge_type_block(self):
-        a = MapBlock(self.mp)
 
-        for i in a.type_merge():
+        print(self.type_merge)
+        for i in self.type_merge:
             parent = self.parentBlock[i[1]-1]
+            parent_mid = (parent.y1 + parent.y2) // 2
             for j in i[0]:
                 child = self.childBlock[j-1]
-                self.create_polygon(child.x2,child.y1,parent.x1,parent.y1,parent.x1,parent.y2,child.x2,child.y2,fill='red')
+                child_mid = (child.y1 +child.y2) // 2
+                self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill='red')
 
     def refresh(self,mp):
         self.delete("all")
         print("get in **** ")
         print(self.mp)
-        for _ in range(3):
-            self._main_process(mp)
-
-
-
-    class Block:
-
-        def __init__(self,vs,info,ph,type):
-
-            self.vs = vs
-
-            self.block_index = info["block"] + 1
-
-            self.lines = []
-
-            self.type = type
-
-            self.tags = self.type +","+str(self.block_index)
-
-            self.ph = ph
-
-            self.info = info
-
-            def show(*args):
-                print(self.tags)
-                for i in self.info["lines"]:
-                    print(i)
-                print("-----")
-
-            vs.tag_bind(self.tags,"<Button-1>",show)
-
-            if self.type == "c":
-                # self.x1 = 10
-                self.x1 = 0
-            else:
-                # self.x1 = 10+block_width+block_gap_h
-                self.x1 = block_width+block_gap_h
-            start_h = self.ph
-
-            for i in range(len(info["lines"])):
-                a = self.Line(vs,self,info["lines"][i],start_h,i)
-                self.lines.append(a)
-                start_h = a.y2
-
-            if len(info["lines"]) != 0:
-                self.end_h = start_h
-            else:
-                self.end_h = self.ph + block_gap_h
-
-
-        def create_coordinate(self):
-            self.height = self.end_h + block_gap_v
-
-            self.x2 =  self.x1 + block_width
-            self.y1 = self.ph+block_gap_v
-            self.y2 = self.height
-
-        def create(self):
-
-            # create rectangle
-            self.create_coordinate()
-            if self.info["type"] == "code":
-                self.vs.create_rectangle(self.x1,self.y1,self.x2, self.y2, fill="yellow",tags=self.tags)
-            else:
-                self.vs.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="blue",tags=self.tags)
-            # create index block rectangle
-            index_x1 = self.x1 + text_gap_h
-            index_y1 = self.y1 + text_gap_v
-            index_x2 = index_x1 + line_index_block_width
-            index_y2 = index_y1 + line_index_block_height
-            self.vs.create_rectangle(index_x1,index_y1,index_x2,index_y2,fill="white")
-
-            # create index block
-            index_text_x = index_x1 + line_index_block_width // 2
-            index_text_y = index_y1 + line_index_block_height // 2
-            self.vs.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.block_index)
-
-
-            for line in self.lines:
-                line.create()
-
-            self.vs.pack(fill=BOTH, expand=YES)
-
-
-        class Line:
-
-            def __init__(self,vs,block,info,start_h,index):
-
-
-                def show(*args):
-                    print(self.tags)
-                    print(info)
-                    print("-----")
-
-                self.vs = vs
-
-                self.line_index = index + 1
-
-                self.x1 = block.x1++line_index_block_width+line_gap_h
-                self.x2 = self.x1 + line_width
-                self.y1 = start_h+line_gap_v
-                self.y2 = self.y1 + line_height
-                size_length = 1
-                if len(info) >= 1:
-                    self.y2 += (len(info) // 50) * line_height
-
-
-
-                alist = [block.type,block.block_index,index]
-                self.tags = ",".join([str(i) for i in alist])
-
-                self.info = info
-
-                # self.rectangle = vs.create_rectangle(self.x1, self.y1, self.x2, self.y2, fill="red",tags=self.tags)
-
-                vs.tag_bind(self.tags,"<Button-1>",show)
-
-                # vs.pack(fill=BOTH, expand=YES)
-
-            def create(self):
-
-                # create text line rectangle
-                self.vs.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
-
-                # create index rectangle
-                index_x1 = self.x1+text_gap_h
-                index_y1 = self.y1+text_gap_v
-                index_x2 = index_x1 + line_index_block_width
-                index_y2 = index_y1 + line_index_block_height
-                self.vs.create_rectangle(index_x1,index_y1,index_x2,index_y2,fill="white")
-
-                # create index text
-                index_text_x = index_x1 + line_index_block_width // 2
-                index_text_y = index_y1 + line_index_block_height // 2
-                self.vs.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.line_index)
-
-                # create text
-                text_x = index_x2 + text_gap_h
-                text_y = self.y1 + text_gap_v
-                text_width = line_width - text_gap_h - line_index_block_width - text_gap_h
-                text = self.vs.create_text(text_x,text_y,font=("Purisa", 10), anchor='nw',text=self.info,width=text_width)
+        self._main_process(mp)

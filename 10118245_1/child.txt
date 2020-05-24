@@ -1,0 +1,30 @@
+Quelques opérations utiles sur les nombres
+Opérations 'bitwise'
+Il est possible aussi de faire des opérations "bit-à-bit" sur les nombres entiers. \\
+le plus simple est de penser à l'écriture du nombre en base 2
+Par exemple
+
+$x = 49 = 32 + 16 + 1 \rightarrow (0,1,1,0,0,0,1) $
+
+$y = 81 = 64 + 16 + 1 \rightarrow (1,0,1,0,0,0,1) $
+
+x=49
+y=81
+L'opération logique '&' va faire un 'et' logique bit à bit entre les opérandes, ainsi
+x&y
+Et en effet
+
+$(0,1,1,0,0,0,1) $
+
+$(1,0,1,0,0,0,1) $
+
+$(0,0,1,0,0,0,1) \rightarrow 17$
+De même, l'opération logique '|' fait simplement un 'ou' logique, comme ceci
+x|y
+On s'y retrouve parce que
+
+$(0,1,1,0,0,0,1) $
+
+$(1,0,1,0,0,0,1) $
+
+$(1,1,1,0,0,0,1) \rightarrow 64+32+16+1$

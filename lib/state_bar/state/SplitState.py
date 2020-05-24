@@ -15,7 +15,7 @@ class SplitState:
 
     def __init__(self,parent):
         self.parent = parent
-        self.data = self.parent.mapblock.type_split()
+        self.data = self.parent.splitdata
 
         self.create()
 
