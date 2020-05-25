@@ -220,6 +220,7 @@ class Block:
                             pro = i.pro
                             break
                     else:
+                        print(i.parent)
                         if i.child.block == self.block.block_index and i.parent.line == self.line_index:
                             pro = i.pro
                             break
