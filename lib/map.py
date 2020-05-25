@@ -67,6 +67,7 @@ class mapformat:
 class line2:
 
     def __init__(self,data):
+        self.data = data
         if "_" != data:
             self.exist = True
             data = data.split(".")
@@ -76,6 +77,9 @@ class line2:
         else:
             self.exist = False
             self.block = -1
+
+    def __str__(self):
+        return self.data
 
 
 class line:

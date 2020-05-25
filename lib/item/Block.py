@@ -216,15 +216,16 @@ class Block:
                 pro = 0
                 for i in mf:
                     if self.block.type == "c":
-                        if i.child.block == self.block.block_index and i.child.line == self.line_index:
-                            pro = i.pro
-                            break
+                        if i.child.exist:
+                            if i.child.block == self.block.block_index and i.child.line == self.line_index:
+                                pro = i.pro
+                                break
                     else:
-                        print(i.parent)
-                        if i.child.block == self.block.block_index and i.parent.line == self.line_index:
-                            pro = i.pro
-                            break
-                line_color = "grey30" if float(pro) == 1.0 else "grey80"
+                        if i.parent.exist:
+                            if i.parent.block == self.block.block_index and i.parent.line == self.line_index:
+                                pro = i.pro
+                                break
+                line_color = "grey60" if float(pro) == 1.0 else "grey80"
                 self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=line_color,tags=self.tags)
             else:
                 self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
