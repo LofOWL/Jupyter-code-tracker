@@ -75,12 +75,6 @@ class Block:
         self.type_split = self.parent.type_split
         self.type_merge = self.parent.type_merge
 
-        print(self.type_total_100)
-        print(self.type_total_90)
-        print(self.type_split)
-        print(self.type_merge)
-        print(self.block_index)
-
         index = 0 if self.type == "c" else 1
         for i in self.type_total_100:
             if type(i[index]) == int:
@@ -190,6 +184,8 @@ class Block:
 
             self.parent = parent
 
+            self.block = block
+
             self.line_index = index + 1
 
             self.x1 = block.x1+line_index_block_width+line_gap_h
@@ -215,8 +211,22 @@ class Block:
 
         def create(self):
 
+            mf = self.parent.mapFile
+
             # create text line rectangle
-            self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
+            pro = 0
+            for i in mf:
+                if self.block.type == "c":
+                    if i.child.block == self.block.block_index and i.child.line == self.line_index:
+                        pro = i.pro
+                        break
+                else:
+                    if i.child.block == self.block.block_index and i.child.line == self.line_index:
+                        pro = i.pro
+                        break
+            line_color = "grey30" if float(pro) == 1.0 else "grey80"
+            print(f"pro {pro} line_color {line_color}")
+            self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=line_color,tags=self.tags)
 
             # create index rectangle
             index_x1 = self.x1+text_gap_h
@@ -246,10 +256,12 @@ class ZoomBlock(Canvas):
 
         self.clickedblock = upperblock
 
-        self.type_total_100 = self.clickedblock.type_total_100
-        self.type_total_90 = self.clickedblock.type_total_90
-        self.type_split = self.clickedblock.type_split
-        self.type_merge = self.clickedblock.type_merge
+        self.type_total_100 = self.clickedblock.parent.type_total_100
+        self.type_total_90 = self.clickedblock.parent.type_total_90
+        self.type_split = self.clickedblock.parent.type_split
+        self.type_merge = self.clickedblock.parent.type_merge
+
+        self.mapFile = self.clickedblock.parent.mapFile
 
         self.currentblock = None
 

@@ -60,6 +60,9 @@ class mapformat:
         self.exist = self.child.exist and self.parent.exist
         self.pro = word[2]
 
+    def __str__(self):
+        return str(self.data)
+
 
 class line2:
 
