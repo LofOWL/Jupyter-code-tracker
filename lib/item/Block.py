@@ -15,7 +15,7 @@ line_height = 25
 line_width = 380
 
 line_index_block_length = 15
-line_index_block_width = 15
+line_index_block_width = 20
 line_index_block_height = 15
 
 class Block:
@@ -147,8 +147,8 @@ class Block:
         self.parent.create_rectangle(index_x1,index_y1,index_x2,index_y2,fill="white")
 
         # create index block
-        index_text_x = index_x1 + line_index_block_width // 2
-        index_text_y = index_y1 + line_index_block_height // 2
+        index_text_x = index_x1 + line_index_block_width / 2
+        index_text_y = index_y1 + line_index_block_height / 2
         self.parent.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.block_index)
 
         # create block and makdown type
@@ -238,8 +238,8 @@ class Block:
             self.parent.create_rectangle(index_x1,index_y1,index_x2,index_y2,fill="white")
 
             # create index text
-            index_text_x = index_x1 + line_index_block_width // 2
-            index_text_y = index_y1 + line_index_block_height // 2
+            index_text_x = index_x1 + line_index_block_width / 2
+            index_text_y = index_y1 + line_index_block_height / 2
             self.parent.create_text(index_text_x,index_text_y,font=("Purisa",10),anchor='c',text=self.line_index)
 
             # create text
@@ -307,8 +307,8 @@ class ZoomBlock(Canvas):
                     if block.block_index == mp.parent.block:
                         parent = [i for i in block.lines if i.line_index == mp.parent.line][0]
                 if parent != None:
-                    child_mid = (child.y1+child.y2) // 2
-                    parent_mid = (parent.y1+parent.y2) // 2
+                    child_mid = (child.y1+child.y2) / 2
+                    parent_mid = (parent.y1+parent.y2) / 2
                     self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill="black",width=3)
         else:
             mapped_block = set([i.child.block for i in output])
