@@ -13,6 +13,8 @@ class vs(Canvas):
         Canvas.__init__(self, parent)
         self.config(bg="white",width=700)
 
+        self.name = "vs"
+
         self._main_process(mp)
 
     def _main_process(self,mp):

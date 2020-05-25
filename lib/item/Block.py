@@ -85,7 +85,6 @@ class Block:
                     if self.block_index == j:
                         return "total_100","grey"
 
-        print("not pass")
 
         for i in self.type_total_90:
             if type(i[index]) == int:
@@ -212,21 +211,22 @@ class Block:
         def create(self):
 
             mf = self.parent.mapFile
-
             # create text line rectangle
-            pro = 0
-            for i in mf:
-                if self.block.type == "c":
-                    if i.child.block == self.block.block_index and i.child.line == self.line_index:
-                        pro = i.pro
-                        break
-                else:
-                    if i.child.block == self.block.block_index and i.child.line == self.line_index:
-                        pro = i.pro
-                        break
-            line_color = "grey30" if float(pro) == 1.0 else "grey80"
-            print(f"pro {pro} line_color {line_color}")
-            self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=line_color,tags=self.tags)
+            if self.parent.name == "zoomblock":
+                pro = 0
+                for i in mf:
+                    if self.block.type == "c":
+                        if i.child.block == self.block.block_index and i.child.line == self.line_index:
+                            pro = i.pro
+                            break
+                    else:
+                        if i.child.block == self.block.block_index and i.parent.line == self.line_index:
+                            pro = i.pro
+                            break
+                line_color = "grey30" if float(pro) == 1.0 else "grey80"
+                self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=line_color,tags=self.tags)
+            else:
+                self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
 
             # create index rectangle
             index_x1 = self.x1+text_gap_h
@@ -253,6 +253,8 @@ class ZoomBlock(Canvas):
         Canvas.__init__(self, parent)
         screen_width = parent.winfo_screenwidth()
         self.config(bg="green",width = screen_width)
+
+        self.name = "zoomblock"
 
         self.clickedblock = upperblock
 
