@@ -213,22 +213,19 @@ class Block:
             mf = self.parent.mapFile
             # create text line rectangle
             if self.parent.name == "zoomblock":
-                pro = 0
+                self.pro = 0
                 for i in mf:
                     if self.block.type == "c":
                         if i.child.exist:
                             if i.child.block == self.block.block_index and i.child.line == self.line_index:
-                                pro = i.pro
+                                self.pro = i.pro
                                 break
                     else:
                         if i.parent.exist:
                             if i.parent.block == self.block.block_index and i.parent.line == self.line_index:
-                                pro = i.pro
+                                self.pro = i.pro
                                 break
-                line_color = "grey60" if float(pro) == 1.0 else "grey80"
-                self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill=line_color,tags=self.tags)
-            else:
-                self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
+            self.parent.create_rectangle(self.x1,self.y1,self.x2,self.y2,fill="white",tags=self.tags)
 
             # create index rectangle
             index_x1 = self.x1+text_gap_h
@@ -309,7 +306,8 @@ class ZoomBlock(Canvas):
                 if parent != None:
                     child_mid = (child.y1+child.y2) / 2
                     parent_mid = (parent.y1+parent.y2) / 2
-                    self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill="black",width=3)
+                    line_color = "grey80" if float(parent.pro) == 1.0 else "deep sky blue"
+                    self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill=line_color,width=3)
         else:
             mapped_block = set([i.child.block for i in output])
             h = 0
@@ -330,6 +328,7 @@ class ZoomBlock(Canvas):
                     if block.block_index == mp.child.block:
                         parent = [i for i in block.lines if i.line_index == mp.child.line][0]
                 if parent != None:
-                    child_mid = (child.y1+child.y2) // 2
-                    parent_mid = (parent.y1+parent.y2) // 2
-                    self.create_line(parent.x2,parent_mid,child.x1,child_mid,fill="black",width=3)
+                    child_mid = (child.y1+child.y2) / 2
+                    parent_mid = (parent.y1+parent.y2) / 2
+                    line_color = "grey80" if float(parent.pro) == 1.0 else "deep sky blue"
+                    self.create_line(parent.x2,parent_mid,child.x1,child_mid,fill=line_color,width=3)
