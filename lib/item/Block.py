@@ -251,7 +251,11 @@ class ZoomBlock(Canvas):
     def __init__(self, parent, upperblock):
         Canvas.__init__(self, parent)
         screen_width = parent.winfo_screenwidth()
-        self.config(bg="green",width = screen_width)
+        # size the frame
+        parent.geometry("1800x500")
+        # color of the back group
+        self.config(bg="bisque2",width = screen_width)
+        self.__scroll_bar()
 
         self.name = "zoomblock"
 
@@ -272,7 +276,15 @@ class ZoomBlock(Canvas):
         # create the init link block
         self.__create_link_block()
 
-        self.pack()
+        self.pack(side=LEFT,expand=True,fill=BOTH)
+
+    def __scroll_bar(self):
+        self.vbar=Scrollbar(self,orient=VERTICAL)
+        self.vbar.pack(side=RIGHT,fill=Y)
+        self.vbar.config(command=self.yview)
+
+        # self.configure(scrollregion = self.bbox("all"))
+        self.config(yscrollcommand=self.vbar.set)
 
     def __init_current_block(self):
 
@@ -306,7 +318,7 @@ class ZoomBlock(Canvas):
                 if parent != None:
                     child_mid = (child.y1+child.y2) / 2
                     parent_mid = (parent.y1+parent.y2) / 2
-                    line_color = "grey80" if float(parent.pro) == 1.0 else "deep sky blue"
+                    line_color = "grey30" if float(parent.pro) == 1.0 else "deep sky blue"
                     self.create_line(child.x2,child_mid,parent.x1,parent_mid,fill=line_color,width=3)
         else:
             mapped_block = set([i.child.block for i in output])
@@ -330,5 +342,5 @@ class ZoomBlock(Canvas):
                 if parent != None:
                     child_mid = (child.y1+child.y2) / 2
                     parent_mid = (parent.y1+parent.y2) / 2
-                    line_color = "grey80" if float(parent.pro) == 1.0 else "deep sky blue"
+                    line_color = "grey30" if float(parent.pro) == 1.0 else "deep sky blue"
                     self.create_line(parent.x2,parent_mid,child.x1,child_mid,fill=line_color,width=3)
