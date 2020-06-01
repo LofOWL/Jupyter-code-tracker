@@ -54,20 +54,22 @@ class MapBlock:
         map_block_100 = []
         map_block_90 = []
         for i in self.child_block_first_line:
-            if i.child.exist and i.parent.exist:
-                c_block = i.child.block
-                p_block = i.parent.block
-                len_child_block = self.child_block[c_block]
-                len_parent_block = self.parent_block[p_block]
-                if len_child_block == len_parent_block:
-                    bp = blockmap.mapChildParent(c_block)
-                    if len(bp) == 1:
-                        map_block.append([c_block,p_block])
-                        count_pro = tool.group(i.child.block)
-                        if count_pro == len_child_block:
-                            map_block_100.append([c_block,p_block])
-                        else:
-                            map_block_90.append([c_block,p_block])
+            c_block = i.child.block
+            # p_block = i.parent.block
+            len_child_block = self.child_block[c_block]
+            # len_parent_block = self.parent_block[p_block]
+            bp = blockmap.mapChildParent(c_block)
+            print(f"block: {c_block} bp {bp}")
+            if len(bp) == 1:
+                p_block = list(bp)[0]
+                map_block.append([c_block,p_block])
+                count_pro = tool.group(i.child.block)
+                if count_pro == len_child_block:
+                    # map_block_100.append([c_block,p_block])
+                    map_block_100.append([c_block,p_block])
+                else:
+                    # map_block_90.append([c_block,p_block])
+                    map_block_90.append([c_block,p_block])
         return map_block,map_block_100,map_block_90
 
 

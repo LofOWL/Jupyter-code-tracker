@@ -31,6 +31,7 @@ class MapBlock:
                 len_parent_block = self.parent_block[p_block]
                 if len_child_block == len_parent_block:
                     bp = blockmap.mapChildParent(c_block)
+                    print(f"bp: {bp}")
                     if len(bp) == 1:
                         map_block.append([c_block,p_block])
                         count_pro = tool.group(i.child.block)

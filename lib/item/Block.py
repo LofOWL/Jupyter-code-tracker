@@ -130,7 +130,7 @@ class Block:
     def create(self):
         # check block type
         block_type,block_color = self.check_type()
-        print(f"block_index: {self.block_index} block_type {block_type}")
+        # print(f"block_index: {self.block_index} block_type {block_type}")
 
         # create rectangle
         self.create_coordinate()
@@ -309,6 +309,7 @@ class ZoomBlock(Canvas):
                 h = block.end_h + text_gap_h
 
             #create lines
+            print(output)
             for mp in output:
                 child = [i for i in self.currentblock.lines if i.line_index == mp.child.line][0]
                 parent = None
