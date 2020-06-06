@@ -90,12 +90,10 @@ class Tool:
         # change the files box
         def callback(eventObject):
             self.currentId = self.shaList.get()
-            print(self.currentId)
             current_commit = self.currentId
             pa = self.pa[self.pa["current_commit"] == str(current_commit)]
 
             all_files = list(pa["filename"])
-            print(all_files)
             self.filesData = all_files
             self.filesListBox['values'] = self.filesData
             self.filesListBox.current(0)
@@ -106,7 +104,6 @@ class Tool:
     def _init_search_sha_button(self):
         def reload():
             self.currentId = self.shaList.get()
-            print(self.currentId)
             current_commit = self.currentId
             pa = self.pa[self.pa["current_commit"] == str(current_commit)]
 
@@ -142,10 +139,7 @@ class Tool:
 
     def commit_files_id(self):
         pa = self.pa[self.pa["current_commit"] == str(self.currentId)]
-        print(pa["filename"])
-        print(self.currentFile)
         pa = pa[pa["filename"] == str(self.currentFile)]
-        print(pa)
         return list(pa["id"])[0]
 
     def _init_vs(self):

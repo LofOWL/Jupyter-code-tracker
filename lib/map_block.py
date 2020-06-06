@@ -11,8 +11,8 @@ class MapBlock:
 
     def __init__ (self,mp):
         self.mp = mp
-        self.child_info = mp.childFile
-        self.parent_info = mp.parentFile
+        self.new_info = mp.new_version_file
+        self.old_info = mp.old_version_file
 
         self.data = self.mp.formatData()
 
@@ -29,7 +29,7 @@ class MapBlock:
                 if mp.child.block == input_block and mp.parent.exist:
                     block = mp.child.block - 1
                     line = mp.child.line - 1
-                    word = self.child_info.line(block,line)
+                    word = self.old_info.line(block,line)
                     if word != '\n':
                         result.append(mp)
             return result
@@ -39,7 +39,7 @@ class MapBlock:
                 if mp.parent.block == input_block and mp.child.exist:
                     block = mp.parent.block - 1
                     line = mp.parent.line - 1
-                    word = self.parent_info.line(block,line)
+                    word = self.new_info.line(block,line)
                     if word != '\n':
                         result.append(mp)
             return result
@@ -59,7 +59,6 @@ class MapBlock:
             len_child_block = self.child_block[c_block]
             # len_parent_block = self.parent_block[p_block]
             bp = blockmap.mapChildParent(c_block)
-            print(f"block: {c_block} bp {bp}")
             if len(bp) == 1:
                 p_block = list(bp)[0]
                 map_block.append([c_block,p_block])
@@ -92,7 +91,7 @@ class MapBlock:
             else:
                 block = mapformat.child.block - 1
                 line = mapformat.child.line - 1
-                word = self.child_info.line(block,line)
+                word = self.old_info.line(block,line)
                 if word != '\n':
                     for parent in parent_exist:
                         if mapformat.child.block == parent.child.block and mapformat.child.line == parent.child.line:
@@ -124,7 +123,7 @@ class MapBlock:
             else:
                 block = mapformat.parent.block - 1
                 line = mapformat.parent.line - 1
-                word = self.parent_info.line(block,line)
+                word = self.new_info.line(block,line)
 
                 if word != '\n':
                     for child in child_exist:

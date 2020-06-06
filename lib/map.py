@@ -16,24 +16,12 @@ class Map:
         self.data = None
         self.missing_index = []
         self.missing_data = []
-        self.childFile = NewFile(self.path+"/New/"+name+"#c.txt")
-        self.parentFile = NewFile(self.path+"/New/"+name+"#p.txt")
+        self.new_version_file = NewFile(self.path+"/New/"+name+"#new.txt")
+        self.old_version_file = NewFile(self.path+"/New/"+name+"#old.txt")
 
         with open(self.path+"/Map/"+name+".txt",'r') as file:
             self.data = file.read()
             self.data = self.data.split("\n")[:-1]
-
-        exist_list = []
-        for i in self.data:
-            lin = line(i)
-            lin.parent()
-            if lin.exist:
-                exist_list.append(lin.index)
-        self.missing_index = [ i for i in range(1,self.parentFile.totalLength+1) if not(i in exist_list)]
-
-    def parentMaptoChild(self):
-        self.missing_data = [ "_,"+self.parentFile.block(i)+",0" for i in self.missing_index]
-        self.data = self.data + self.missing_data
 
     def sortbyParent(self):
         self.data.sort(key=lambda x: line(x).parent())

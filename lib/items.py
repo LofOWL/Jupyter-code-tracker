@@ -21,12 +21,9 @@ class vs(Canvas):
 
         self.mp = mp
 
-        for i in self.mp.data:
-            print(i)
+        self.old_version = mp.old_version_file.data
 
-        self.parentFile = mp.parentFile.data
-
-        self.childFile = mp.childFile.data
+        self.new_version = mp.new_version_file.data
 
         self.mapFile = mp.formatData()
 
@@ -77,8 +74,8 @@ class vs(Canvas):
 
         self.childBlock = []
         h = 0
-        for information in self.childFile:
-            a = Block(self,information,h,"c")
+        for information in self.old_version:
+            a = Block(self,information,h,"old")
             a.create()
             self.childBlock.append(a)
             h = a.y2
@@ -87,8 +84,8 @@ class vs(Canvas):
 
         self.parentBlock = []
         h = 0
-        for information in self.parentFile:
-            a = Block(self,information,h,"p")
+        for information in self.new_version:
+            a = Block(self,information,h,"new")
             a.create()
             self.parentBlock.append(a)
             h = a.y2

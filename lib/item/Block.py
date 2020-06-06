@@ -51,7 +51,7 @@ class Block:
 
         self.parent.tag_bind(self.tags,"<Button-1>",show)
 
-        if self.type == "c":
+        if self.type == "old":
             # self.x1 = 10
             self.x1 = 0
         else:
@@ -75,7 +75,7 @@ class Block:
         self.type_split = self.parent.type_split
         self.type_merge = self.parent.type_merge
 
-        index = 0 if self.type == "c" else 1
+        index = 0 if self.type == "old" else 1
         for i in self.type_total_100:
             if type(i[index]) == int:
                 if self.block_index == i[index]:
@@ -114,7 +114,7 @@ class Block:
                         return "merge","blue"
 
 
-        if self.type == "c":
+        if self.type == "old":
             return "delete","red"
         else:
             return "add","green"
@@ -215,7 +215,7 @@ class Block:
             if self.parent.name == "zoomblock":
                 self.pro = 0
                 for i in mf:
-                    if self.block.type == "c":
+                    if self.block.type == "new":
                         if i.child.exist:
                             if i.child.block == self.block.block_index and i.child.line == self.line_index:
                                 self.pro = i.pro
@@ -249,13 +249,13 @@ class Block:
 class ZoomBlock(Canvas):
 
     def __init__(self, parent, upperblock):
-        Canvas.__init__(self, parent)
+        self.parent = parent
+        Canvas.__init__(self, self.parent)
         screen_width = parent.winfo_screenwidth()
         # size the frame
         parent.geometry("1800x500")
         # color of the back group
         self.config(bg="bisque2",width = screen_width)
-        self.__scroll_bar()
 
         self.name = "zoomblock"
 
@@ -276,15 +276,18 @@ class ZoomBlock(Canvas):
         # create the init link block
         self.__create_link_block()
 
+        # scroll bar init
+        self.__scroll_bar()
+
+        # set config and pack
+        self.configure(scrollregion = self.bbox("all"))
+        self.config(yscrollcommand=self.vbar.set)
         self.pack(side=LEFT,expand=True,fill=BOTH)
 
     def __scroll_bar(self):
         self.vbar=Scrollbar(self,orient=VERTICAL)
         self.vbar.pack(side=RIGHT,fill=Y)
         self.vbar.config(command=self.yview)
-
-        # self.configure(scrollregion = self.bbox("all"))
-        self.config(yscrollcommand=self.vbar.set)
 
     def __init_current_block(self):
 
@@ -297,19 +300,18 @@ class ZoomBlock(Canvas):
 
         output = map.map_block(self.currentblock.block_index,self.clickedblock.type)
 
-        if self.clickedblock.type == "c":
+        if self.clickedblock.type == "old":
             mapped_block = set([i.parent.block for i in output])
 
             block_list = []
             h = 0
             for i in mapped_block:
-                block = Block(self,self.clickedblock.parent.parentFile[i-1],h,"p")
+                block = Block(self,self.clickedblock.parent.new_version[i-1],h,"new")
                 block.create()
                 block_list.append(block)
                 h = block.end_h + text_gap_h
 
             #create lines
-            print(output)
             for mp in output:
                 child = [i for i in self.currentblock.lines if i.line_index == mp.child.line][0]
                 parent = None
@@ -327,7 +329,7 @@ class ZoomBlock(Canvas):
 
             block_list = []
             for i in mapped_block:
-                block = Block(self,self.clickedblock.parent.childFile[i-1],h,"c")
+                block = Block(self,self.clickedblock.parent.old_version[i-1],h,"old")
                 block.create()
                 block_list.append(block)
                 h = block.end_h + text_gap_h
