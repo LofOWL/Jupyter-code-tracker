@@ -1,0 +1,278 @@
+repo,id,filename,old_cell,new_cell,type,evaluation,correct_old_cell,correct_new_cell
+recommenders,62bde140f7444be4474618cc710399164912f888#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,14,11,split,n,14,14
+recommenders,62bde140f7444be4474618cc710399164912f888#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,14,13,split,n,14,14
+fastai,edab9efd388659eb52d313f85c76a22bd0767954#1,courses/dl1/test_transforms.ipynb,28,26,split,n,28,28
+fastai,edab9efd388659eb52d313f85c76a22bd0767954#1,courses/dl1/test_transforms.ipynb,28,22,split,n,28,28
+Data-Analysis,13368040a9d198b11608f3ecaa627a1956fa58b6#0,statistics/Investigating Data.ipynb,12,27,split,n,12,12
+Data-Analysis,13368040a9d198b11608f3ecaa627a1956fa58b6#0,statistics/Investigating Data.ipynb,12,14,split,n,12,12
+Data-Analysis,13368040a9d198b11608f3ecaa627a1956fa58b6#0,statistics/Investigating Data.ipynb,12,30,split,n,12,12
+ThinkDSP,cc9b668fd3721c75561065c5a107870bb73ff2b5#0,code/chap09.ipynb,6,12,split,n,6,6
+ThinkDSP,cc9b668fd3721c75561065c5a107870bb73ff2b5#0,code/chap09.ipynb,6,6,split,n,6,6
+Data-Analysis,32730e4d9f10401db0f77886fc93d417174dcefb#0,plotly/Plotly Intro.ipynb,2,4,split,y,2,2
+Data-Analysis,32730e4d9f10401db0f77886fc93d417174dcefb#0,plotly/Plotly Intro.ipynb,2,4,split,y,2,2
+Data-Analysis,32730e4d9f10401db0f77886fc93d417174dcefb#0,plotly/Plotly Intro.ipynb,2,6,split,y,2,2
+Data-Analysis,32730e4d9f10401db0f77886fc93d417174dcefb#0,plotly/Plotly Intro.ipynb,2,6,split,y,2,2
+ThinkDSP,d600709e0d617efaa5a0a19970547b08528c3cd5#0,code/chap08.ipynb,18,18,split,n,18,18
+ThinkDSP,d600709e0d617efaa5a0a19970547b08528c3cd5#0,code/chap08.ipynb,18,61,split,n,18,18
+ThinkDSP,a9e67e3bba2cdc0dc5ea0a6cbb5c161b853137bb#0,code/chap06.ipynb,20,24,split,n,20,20
+ThinkDSP,a9e67e3bba2cdc0dc5ea0a6cbb5c161b853137bb#0,code/chap06.ipynb,20,20,split,n,20,20
+fastai,3f426336fea1f866213750f6ffb5cb17e35ff728#1,courses/dl1/test_transforms.ipynb,45,41,split,n,45,45
+fastai,3f426336fea1f866213750f6ffb5cb17e35ff728#1,courses/dl1/test_transforms.ipynb,45,47,split,n,45,45
+fastai,cc5ed2e3515467ac0a03cd047d79b623406048b5#0,docs_src/widgets.image_cleaner.ipynb,73,65,split,n,73,73
+fastai,cc5ed2e3515467ac0a03cd047d79b623406048b5#0,docs_src/widgets.image_cleaner.ipynb,73,58,split,n,73,73
+h2o-3,9fa3eceaf326e0bea9f1b18150f825a202698ce5#0,examples/deeplearning/notebooks/deeplearning_mxnet_cifar10.ipynb,9,13,split,n,9,9
+h2o-3,9fa3eceaf326e0bea9f1b18150f825a202698ce5#0,examples/deeplearning/notebooks/deeplearning_mxnet_cifar10.ipynb,9,14,split,n,9,9
+Data-Analysis,0ccbf25fce26b756abe8908531ad5827c4a43183#0,univariate_dist/Histogram and Density Plot.ipynb,16,18,split,n,16,16
+Data-Analysis,0ccbf25fce26b756abe8908531ad5827c4a43183#0,univariate_dist/Histogram and Density Plot.ipynb,16,28,split,n,16,16
+Data-Analysis,0ccbf25fce26b756abe8908531ad5827c4a43183#0,univariate_dist/Histogram and Density Plot.ipynb,16,29,split,n,16,16
+fastai,ea9c07a0c49a4714e51ba3b8016157f034803bb4#1,courses/dl1/lesson6-rnn.ipynb,151,148,split,y,151,151
+fastai,ea9c07a0c49a4714e51ba3b8016157f034803bb4#1,courses/dl1/lesson6-rnn.ipynb,151,148,split,y,151,151
+fastai,ea9c07a0c49a4714e51ba3b8016157f034803bb4#1,courses/dl1/lesson6-rnn.ipynb,151,149,split,y,151,151
+fastai,ea9c07a0c49a4714e51ba3b8016157f034803bb4#1,courses/dl1/lesson6-rnn.ipynb,151,149,split,y,151,151
+fastai,64aea869ea5c5ab80c41cb5be624fbe19d43f9c1#1,courses/dl2/enhance.ipynb,49,66,split,n,49,49
+fastai,64aea869ea5c5ab80c41cb5be624fbe19d43f9c1#1,courses/dl2/enhance.ipynb,49,61,split,n,49,49
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#4,PmagPy_plots_analysis.ipynb,172,172,split,n,172,172
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#4,PmagPy_plots_analysis.ipynb,172,198,split,n,172,172
+ThinkDSP,fcb5216ab348a1256e7fa79e57b7c3887df0c4ab#0,code/chap04.ipynb,19,20,split,n,19,19
+ThinkDSP,fcb5216ab348a1256e7fa79e57b7c3887df0c4ab#0,code/chap04.ipynb,19,14,split,n,19,19
+fastai,f93ddafcdfdc0f96ed059af0eff59a10b2726dca#0,courses/ml1/lesson1.ipynb,69,56,split,n,69,69
+fastai,f93ddafcdfdc0f96ed059af0eff59a10b2726dca#0,courses/ml1/lesson1.ipynb,69,82,split,n,69,69
+recommenders,ffcf4c7384c1a38971a1439dfbac20d95a73ce00#1,notebooks/04_model_select_and_optimize/hypertune_aml_wide_and_deep_quickstart.ipynb,37,32,split,n,37,37
+recommenders,ffcf4c7384c1a38971a1439dfbac20d95a73ce00#1,notebooks/04_model_select_and_optimize/hypertune_aml_wide_and_deep_quickstart.ipynb,37,34,split,n,37,37
+recommenders,ffcf4c7384c1a38971a1439dfbac20d95a73ce00#1,notebooks/04_model_select_and_optimize/hypertune_aml_wide_and_deep_quickstart.ipynb,37,28,split,n,37,37
+recommenders,ffcf4c7384c1a38971a1439dfbac20d95a73ce00#1,notebooks/04_model_select_and_optimize/hypertune_aml_wide_and_deep_quickstart.ipynb,37,36,split,n,37,37
+ThinkDSP,c4ea7ce427f3cccef458d46c181a4ae5f9559ea3#0,code/chap11.ipynb,75,80,split,n,75,75
+ThinkDSP,c4ea7ce427f3cccef458d46c181a4ae5f9559ea3#0,code/chap11.ipynb,75,81,split,n,75,75
+fastai,2bbbaabe934fde46cbd4bd8cb44b770f7cf7720c#3,docs_src/tabular.transform.ipynb,13,9,split,n,13,13
+fastai,2bbbaabe934fde46cbd4bd8cb44b770f7cf7720c#3,docs_src/tabular.transform.ipynb,13,42,split,n,13,13
+fastai,2bbbaabe934fde46cbd4bd8cb44b770f7cf7720c#3,docs_src/tabular.transform.ipynb,13,44,split,n,13,13
+fastai,2bbbaabe934fde46cbd4bd8cb44b770f7cf7720c#3,docs_src/tabular.transform.ipynb,13,13,split,n,13,13
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#4,PmagPy_plots_analysis.ipynb,61,61,split,n,61,61
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#4,PmagPy_plots_analysis.ipynb,61,29,split,n,61,61
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,323,318,split,n,323,323
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,323,323,split,n,323,323
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,323,46,split,n,323,323
+Data-Analysis,6012c3d1b2062b135f81d8cb9b9d22dcab5e553a#0,statistics/Simpson's Paradox.ipynb,6,10,split,n,6,6
+Data-Analysis,6012c3d1b2062b135f81d8cb9b9d22dcab5e553a#0,statistics/Simpson's Paradox.ipynb,6,11,split,n,6,6
+Data-Analysis,6012c3d1b2062b135f81d8cb9b9d22dcab5e553a#0,statistics/Simpson's Paradox.ipynb,6,13,split,n,6,6
+recommenders,d08d8c6cb4a3d08922fef4d7f38d0f1ffc6c752b#0,notebooks/02_model/vowpal_wabbit_deep_dive.ipynb,3,3,split,y,3,3
+recommenders,d08d8c6cb4a3d08922fef4d7f38d0f1ffc6c752b#0,notebooks/02_model/vowpal_wabbit_deep_dive.ipynb,3,3,split,y,3,3
+recommenders,d08d8c6cb4a3d08922fef4d7f38d0f1ffc6c752b#0,notebooks/02_model/vowpal_wabbit_deep_dive.ipynb,3,4,split,y,3,3
+recommenders,d08d8c6cb4a3d08922fef4d7f38d0f1ffc6c752b#0,notebooks/02_model/vowpal_wabbit_deep_dive.ipynb,3,4,split,y,3,3
+recommenders,789206a3c0facff2871149c94a7b2500b3f1c032#0,notebooks/00_quick_start/sar_python_cpu_movielens.ipynb,23,24,split,n,23,23
+recommenders,789206a3c0facff2871149c94a7b2500b3f1c032#0,notebooks/00_quick_start/sar_python_cpu_movielens.ipynb,23,25,split,n,23,23
+recommenders,789206a3c0facff2871149c94a7b2500b3f1c032#0,notebooks/00_quick_start/sar_python_cpu_movielens.ipynb,23,26,split,n,23,23
+recommenders,789206a3c0facff2871149c94a7b2500b3f1c032#0,notebooks/00_quick_start/sar_python_cpu_movielens.ipynb,23,27,split,n,23,23
+ThinkDSP,3ff701e4b9869e019affd757a24002ea5a40fd8d#4,code/chap08.ipynb,19,66,split,n,19,19
+ThinkDSP,3ff701e4b9869e019affd757a24002ea5a40fd8d#4,code/chap08.ipynb,19,18,split,n,19,19
+ThinkDSP,3ff701e4b9869e019affd757a24002ea5a40fd8d#4,code/chap08.ipynb,19,23,split,n,19,19
+Data-Analysis,2a174e9848b1aca55d907606e4e52e00ad8dfefe#0,plotly/plotly-intermediate-time-series.ipynb,25,36,split,n,25,25
+Data-Analysis,2a174e9848b1aca55d907606e4e52e00ad8dfefe#0,plotly/plotly-intermediate-time-series.ipynb,25,37,split,n,25,25
+recommenders,d79b6aee4c651015040cbe3f67ead936d26facbb#0,notebooks/02_model/ncf_deep_dive.ipynb,29,29,split,y,29,29
+recommenders,d79b6aee4c651015040cbe3f67ead936d26facbb#0,notebooks/02_model/ncf_deep_dive.ipynb,29,29,split,y,29,29
+recommenders,d79b6aee4c651015040cbe3f67ead936d26facbb#0,notebooks/02_model/ncf_deep_dive.ipynb,29,30,split,y,29,29
+recommenders,d79b6aee4c651015040cbe3f67ead936d26facbb#0,notebooks/02_model/ncf_deep_dive.ipynb,29,30,split,y,29,29
+fastai,a1bae68f8558a1a44cc18a6e0bf4960483b585bc#0,docs_src/text_tmp.ipynb,11,4,split,y,11,11
+fastai,a1bae68f8558a1a44cc18a6e0bf4960483b585bc#0,docs_src/text_tmp.ipynb,11,4,split,y,11,11
+fastai,a1bae68f8558a1a44cc18a6e0bf4960483b585bc#0,docs_src/text_tmp.ipynb,11,5,split,y,11,11
+fastai,a1bae68f8558a1a44cc18a6e0bf4960483b585bc#0,docs_src/text_tmp.ipynb,11,5,split,y,11,11
+Data-Analysis,42af1df7746821893028ee49e52a6060f35d18c4#0,medium/Medium Stats Analysis.ipynb,81,80,split,y,81,81
+Data-Analysis,42af1df7746821893028ee49e52a6060f35d18c4#0,medium/Medium Stats Analysis.ipynb,81,80,split,y,81,81
+Data-Analysis,42af1df7746821893028ee49e52a6060f35d18c4#0,medium/Medium Stats Analysis.ipynb,81,81,split,y,81,81
+Data-Analysis,42af1df7746821893028ee49e52a6060f35d18c4#0,medium/Medium Stats Analysis.ipynb,81,81,split,y,81,81
+fastai,d22bc506642576be1b5273282f4da35d2bcf05bd#0,docs_src/text.data.ipynb,16,16,split,n,16,16
+fastai,d22bc506642576be1b5273282f4da35d2bcf05bd#0,docs_src/text.data.ipynb,16,20,split,n,16,16
+recommenders,b43ced82363f2ef5aa7074c98180e870d318bff3#0,notebooks/05_operationalize/als_movie_o16n.ipynb,36,36,split,y,36,36
+recommenders,b43ced82363f2ef5aa7074c98180e870d318bff3#0,notebooks/05_operationalize/als_movie_o16n.ipynb,36,36,split,y,36,36
+recommenders,b43ced82363f2ef5aa7074c98180e870d318bff3#0,notebooks/05_operationalize/als_movie_o16n.ipynb,36,37,split,y,36,36
+recommenders,b43ced82363f2ef5aa7074c98180e870d318bff3#0,notebooks/05_operationalize/als_movie_o16n.ipynb,36,37,split,y,36,36
+recommenders,bb5389b11e2b5cb5a22679c1356fa80543239f2b#0,notebooks/00_quick_start/tfidf_covid.ipynb,17,17,split,n,17,17
+recommenders,bb5389b11e2b5cb5a22679c1356fa80543239f2b#0,notebooks/00_quick_start/tfidf_covid.ipynb,17,19,split,n,17,17
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#0,PmagPy-cli.ipynb,316,192,split,n,316,316
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#0,PmagPy-cli.ipynb,316,216,split,n,316,316
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,12,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,12,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,12,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,13,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,13,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,13,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,14,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,14,split,y,10,10
+recommenders,90286eaa02f1723c54eb16cc2559a86abd832472#0,notebooks/02_model/mmlspark_lightgbm_criteo.ipynb,10,14,split,y,10,10
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,10,50,split,n,10,10
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,10,53,split,n,10,10
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,10,6,split,n,10,10
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,10,7,split,n,10,10
+fastai,3e9f1021dde2b731ce13493ecfb96db1e46da73d#2,courses/dl1/lesson2-image_models.ipynb,22,33,split,n,22,22
+fastai,3e9f1021dde2b731ce13493ecfb96db1e46da73d#2,courses/dl1/lesson2-image_models.ipynb,22,27,split,n,22,22
+recommenders,e83ecb4287d604a1b695b49e477f59c85c9c6d57#0,notebooks/05_operationalize/create_and_configure_cluster.ipynb,11,11,split,y,11,11
+recommenders,e83ecb4287d604a1b695b49e477f59c85c9c6d57#0,notebooks/05_operationalize/create_and_configure_cluster.ipynb,11,11,split,y,11,11
+recommenders,e83ecb4287d604a1b695b49e477f59c85c9c6d57#0,notebooks/05_operationalize/create_and_configure_cluster.ipynb,11,12,split,y,11,11
+recommenders,e83ecb4287d604a1b695b49e477f59c85c9c6d57#0,notebooks/05_operationalize/create_and_configure_cluster.ipynb,11,12,split,y,11,11
+ThinkDSP,c4ea7ce427f3cccef458d46c181a4ae5f9559ea3#1,code/chap11soln.ipynb,5,6,split,n,5,5
+ThinkDSP,c4ea7ce427f3cccef458d46c181a4ae5f9559ea3#1,code/chap11soln.ipynb,5,7,split,n,5,5
+PmagPy,c2fbebfa57b8fe95fae763aa299caac90443969d#0,PmagPy-cli.ipynb,219,80,split,n,219,219
+PmagPy,c2fbebfa57b8fe95fae763aa299caac90443969d#0,PmagPy-cli.ipynb,219,174,split,n,219,219
+Data-Analysis,628b6a3c8e5320291ee2c083e38d32a21734e127#0,bayesian_lr/Bayesian Linear Regression Project.ipynb,26,27,split,n,26,26
+Data-Analysis,628b6a3c8e5320291ee2c083e38d32a21734e127#0,bayesian_lr/Bayesian Linear Regression Project.ipynb,26,29,split,n,26,26
+recommenders,53926bc31f6120c9d8ab9c567cb43ee3dd1a65db#0,notebooks/00_quick_start/wide_deep_movielens.ipynb,3,4,split,y,3,3
+recommenders,53926bc31f6120c9d8ab9c567cb43ee3dd1a65db#0,notebooks/00_quick_start/wide_deep_movielens.ipynb,3,4,split,y,3,3
+recommenders,53926bc31f6120c9d8ab9c567cb43ee3dd1a65db#0,notebooks/00_quick_start/wide_deep_movielens.ipynb,3,5,split,y,3,3
+recommenders,53926bc31f6120c9d8ab9c567cb43ee3dd1a65db#0,notebooks/00_quick_start/wide_deep_movielens.ipynb,3,5,split,y,3,3
+Data-Analysis,94fd16fff52002dbb106dd0a7e44ca075117045e#0,slack_interaction/Slack Integration.ipynb,84,84,split,n,84,84
+Data-Analysis,94fd16fff52002dbb106dd0a7e44ca075117045e#0,slack_interaction/Slack Integration.ipynb,84,101,split,n,84,84
+Data-Analysis,94fd16fff52002dbb106dd0a7e44ca075117045e#0,slack_interaction/Slack Integration.ipynb,84,86,split,n,84,84
+fastai,e1c16d8e29de33860f7cada84482d43a27b2fd71#0,courses/dl1/test_transforms.ipynb,31,41,split,n,31,31
+fastai,e1c16d8e29de33860f7cada84482d43a27b2fd71#0,courses/dl1/test_transforms.ipynb,31,34,split,n,31,31
+ThinkDSP,5d951619cd7d9ae1d7d63697a66ca06d02fc9f14#1,code/chap09soln.ipynb,12,35,split,n,12,12
+ThinkDSP,5d951619cd7d9ae1d7d63697a66ca06d02fc9f14#1,code/chap09soln.ipynb,12,13,split,n,12,12
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,19,16,split,y,19,19
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,19,16,split,y,19,19
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,19,17,split,y,19,19
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,19,17,split,y,19,19
+h2o-3,19ab94b13e013a23258100f8358801db86ad675e#14,h2o-py/demos/confusion_DEPRECATED_matrices_binomial.ipynb,12,9,split,n,12,12
+h2o-3,19ab94b13e013a23258100f8358801db86ad675e#14,h2o-py/demos/confusion_DEPRECATED_matrices_binomial.ipynb,12,12,split,n,12,12
+h2o-3,19ab94b13e013a23258100f8358801db86ad675e#14,h2o-py/demos/confusion_DEPRECATED_matrices_binomial.ipynb,12,7,split,n,12,12
+ThinkDSP,90e4b3195e527253e246dbbce3d9e5192048db44#4,code/chap02soln.ipynb,43,16,split,n,43,43
+ThinkDSP,90e4b3195e527253e246dbbce3d9e5192048db44#4,code/chap02soln.ipynb,43,43,split,n,43,43
+Data-Analysis,120e2fab0fa4d5fbfe4f527a2971d860fffb3035#0,widgets/Widgets Overview.ipynb,16,19,split,n,16,16
+Data-Analysis,120e2fab0fa4d5fbfe4f527a2971d860fffb3035#0,widgets/Widgets Overview.ipynb,16,20,split,n,16,16
+Data-Analysis,120e2fab0fa4d5fbfe4f527a2971d860fffb3035#0,widgets/Widgets Overview.ipynb,16,22,split,n,16,16
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,152,152,split,n,152,152
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,152,165,split,n,152,152
+PmagPy,95de4c01ea723142cd96c01db07be67cb8daac92#0,PmagPy_online.ipynb,29,51,split,n,29,29
+PmagPy,95de4c01ea723142cd96c01db07be67cb8daac92#0,PmagPy_online.ipynb,29,52,split,n,29,29
+PmagPy,95de4c01ea723142cd96c01db07be67cb8daac92#0,PmagPy_online.ipynb,29,29,split,n,29,29
+fastai,d22bc506642576be1b5273282f4da35d2bcf05bd#3,docs_src/text.models.ipynb,34,34,merge,n,37,37
+fastai,d22bc506642576be1b5273282f4da35d2bcf05bd#3,docs_src/text.models.ipynb,37,34,merge,n,37,37
+fastai,b751575ac32f3006e100e3fd992567dc94e1f79d#5,docs_src/callbacks.hooks.ipynb,37,13,merge,n,37,37
+fastai,b751575ac32f3006e100e3fd992567dc94e1f79d#5,docs_src/callbacks.hooks.ipynb,38,13,merge,n,37,37
+ThinkDSP,fcb5216ab348a1256e7fa79e57b7c3887df0c4ab#0,code/chap04.ipynb,27,30,merge,n,29,29
+ThinkDSP,fcb5216ab348a1256e7fa79e57b7c3887df0c4ab#0,code/chap04.ipynb,29,30,merge,n,29,29
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#0,PmagPy-cli.ipynb,35,31,merge,n,31,31
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#0,PmagPy-cli.ipynb,31,31,merge,n,31,31
+ThinkDSP,418001f60d5507db24655c61c88be630113e1788#0,code/chap05.ipynb,67,51,merge,n,51,51
+ThinkDSP,418001f60d5507db24655c61c88be630113e1788#0,code/chap05.ipynb,51,51,merge,n,51,51
+fastai,fc6af69a2496436cc82e68f82edc69b8fd8a98b3#0,tutorials/linalg_pytorch.ipynb,8,18,merge,n,10,10
+fastai,fc6af69a2496436cc82e68f82edc69b8fd8a98b3#0,tutorials/linalg_pytorch.ipynb,10,18,merge,n,10,10
+recommenders,870bc1dd81432ded97b3ddfa8c7de3a14069a705#0,notebooks/02_model/hyper_parameter_tuning.ipynb,14,25,merge,n,-1,-1
+recommenders,870bc1dd81432ded97b3ddfa8c7de3a14069a705#0,notebooks/02_model/hyper_parameter_tuning.ipynb,15,25,merge,n,-1,-1
+fastai,052bf674c244784ce68e46981af63e9e9fead210#3,courses/dl1/lesson6-rnn.ipynb,66,66,merge,n,66,66
+fastai,052bf674c244784ce68e46981af63e9e9fead210#3,courses/dl1/lesson6-rnn.ipynb,71,66,merge,n,66,66
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,58,57,merge,y,58,58
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,58,57,merge,y,59,59
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,58,57,merge,y,60,60
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,59,57,merge,y,58,58
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,59,57,merge,y,59,59
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,59,57,merge,y,60,60
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,60,57,merge,y,58,58
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,60,57,merge,y,59,59
+fastai,b9ae5782b7d00336a491bcdc733b05a91c43b119#0,docs_src/data_block.ipynb,60,57,merge,y,60,60
+recommenders,52cd2f862851856c82786034913e079ef89e9400#0,notebooks/05_operationalize/als_movie_o16n.ipynb,27,33,merge,n,-1,-1
+recommenders,52cd2f862851856c82786034913e079ef89e9400#0,notebooks/05_operationalize/als_movie_o16n.ipynb,21,33,merge,n,-1,-1
+ThinkDSP,f3e21cc5a67534f8077bd64145efc89827c9d531#0,code/chap03.ipynb,24,20,merge,n,20,20
+ThinkDSP,f3e21cc5a67534f8077bd64145efc89827c9d531#0,code/chap03.ipynb,18,20,merge,n,20,20
+ThinkDSP,f3e21cc5a67534f8077bd64145efc89827c9d531#0,code/chap03.ipynb,20,20,merge,n,20,20
+fastai,131e230dd915b0998b8afe9603a183c001422da8#0,courses/dl1/lesson6-rnn.ipynb,18,53,merge,n,53,53
+fastai,131e230dd915b0998b8afe9603a183c001422da8#0,courses/dl1/lesson6-rnn.ipynb,53,53,merge,n,53,53
+PmagPy,c2fbebfa57b8fe95fae763aa299caac90443969d#0,PmagPy-cli.ipynb,105,350,merge,n,349,349
+PmagPy,c2fbebfa57b8fe95fae763aa299caac90443969d#0,PmagPy-cli.ipynb,349,350,merge,n,349,349
+fastai,edab9efd388659eb52d313f85c76a22bd0767954#1,courses/dl1/test_transforms.ipynb,45,51,merge,n,53,53
+fastai,edab9efd388659eb52d313f85c76a22bd0767954#1,courses/dl1/test_transforms.ipynb,53,51,merge,n,53,53
+Data-Analysis,3b294faeeb90057741e96d4c0e8650d76c197a71#0,poisson/asteroid-impacts-poisson.ipynb,48,48,merge,n,48,48
+Data-Analysis,3b294faeeb90057741e96d4c0e8650d76c197a71#0,poisson/asteroid-impacts-poisson.ipynb,55,48,merge,n,48,48
+ThinkDSP,37ab5c62ca0c7f0ec6b72e61964c1b6115e22e7c#0,code/chap09.ipynb,81,65,merge,n,-1,-1
+ThinkDSP,37ab5c62ca0c7f0ec6b72e61964c1b6115e22e7c#0,code/chap09.ipynb,20,65,merge,n,-1,-1
+ThinkDSP,37ab5c62ca0c7f0ec6b72e61964c1b6115e22e7c#0,code/chap09.ipynb,79,65,merge,n,-1,-1
+recommenders,163c12167ce15bc7a20e9fbbf2448733a6fc8553#0,notebooks/02_model/rbm_deep_dive.ipynb,9,9,merge,n,10,10
+recommenders,163c12167ce15bc7a20e9fbbf2448733a6fc8553#0,notebooks/02_model/rbm_deep_dive.ipynb,10,9,merge,n,10,10
+recommenders,5178d1cfe6af80c0b7b6cebdcfa04f44a57a876c#0,notebooks/02_modeling/sar_deep_dive.ipynb,17,11,merge,y,17,17
+recommenders,5178d1cfe6af80c0b7b6cebdcfa04f44a57a876c#0,notebooks/02_modeling/sar_deep_dive.ipynb,17,11,merge,y,13,13
+recommenders,5178d1cfe6af80c0b7b6cebdcfa04f44a57a876c#0,notebooks/02_modeling/sar_deep_dive.ipynb,13,11,merge,y,17,17
+recommenders,5178d1cfe6af80c0b7b6cebdcfa04f44a57a876c#0,notebooks/02_modeling/sar_deep_dive.ipynb,13,11,merge,y,13,13
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#0,PmagPy-cli.ipynb,152,33,merge,n,33,33
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#0,PmagPy-cli.ipynb,33,33,merge,n,33,33
+PmagPy,77f98a19af0bbd4a48ac1f631c7e76cb44707c45#0,PmagPy-cli.ipynb,293,277,merge,n,278,278
+PmagPy,77f98a19af0bbd4a48ac1f631c7e76cb44707c45#0,PmagPy-cli.ipynb,278,277,merge,n,278,278
+h2o-3,5408539f72c3725c54c721a1c84ee93ba958d888#0,h2o-py/demos/glrm_census_large.ipynb,4,5,merge,n,5,5
+h2o-3,5408539f72c3725c54c721a1c84ee93ba958d888#0,h2o-py/demos/glrm_census_large.ipynb,5,5,merge,n,5,5
+Data-Analysis,d3c87c2f29c6260d1ebddb9e1414ca839d37a5bc#0,statistics/Investigating Data.ipynb,3,8,merge,y,3,3
+Data-Analysis,d3c87c2f29c6260d1ebddb9e1414ca839d37a5bc#0,statistics/Investigating Data.ipynb,3,8,merge,y,7,7
+Data-Analysis,d3c87c2f29c6260d1ebddb9e1414ca839d37a5bc#0,statistics/Investigating Data.ipynb,7,8,merge,y,3,3
+Data-Analysis,d3c87c2f29c6260d1ebddb9e1414ca839d37a5bc#0,statistics/Investigating Data.ipynb,7,8,merge,y,7,7
+ThinkDSP,30b5a8cac55d4c23cca9415ca44f92f879a33def#0,code/chap05soln.ipynb,10,10,merge,n,10,10
+ThinkDSP,30b5a8cac55d4c23cca9415ca44f92f879a33def#0,code/chap05soln.ipynb,12,10,merge,n,10,10
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,24,46,merge,y,24,24
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,24,46,merge,y,21,21
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,21,46,merge,y,24,24
+fastai,5300b154af0641580f67708eeb26d981fdf465d1#0,courses/dl1/test_transforms.ipynb,21,46,merge,y,21,21
+recommenders,5ab9c55d6a76e8f7175420fd5bf59412e0f20b80#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,9,9,merge,y,9,9
+recommenders,5ab9c55d6a76e8f7175420fd5bf59412e0f20b80#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,9,9,merge,y,10,10
+recommenders,5ab9c55d6a76e8f7175420fd5bf59412e0f20b80#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,10,9,merge,y,9,9
+recommenders,5ab9c55d6a76e8f7175420fd5bf59412e0f20b80#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,10,9,merge,y,10,10
+fastai,8f317a698c07ff082f21f0669b49eb5e620437f0#0,docs_src/tutorial.inference.ipynb,75,83,merge,n,-1,-1
+fastai,8f317a698c07ff082f21f0669b49eb5e620437f0#0,docs_src/tutorial.inference.ipynb,84,83,merge,n,-1,-1
+recommenders,c98ef6fc299aaf769a13258c0c0079a7c228432a#1,notebooks/02_modeling/sar_educational_walkthrough.ipynb,26,3,merge,y,26,26
+recommenders,c98ef6fc299aaf769a13258c0c0079a7c228432a#1,notebooks/02_modeling/sar_educational_walkthrough.ipynb,26,3,merge,y,3,3
+recommenders,c98ef6fc299aaf769a13258c0c0079a7c228432a#1,notebooks/02_modeling/sar_educational_walkthrough.ipynb,3,3,merge,y,26,26
+recommenders,c98ef6fc299aaf769a13258c0c0079a7c228432a#1,notebooks/02_modeling/sar_educational_walkthrough.ipynb,3,3,merge,y,3,3
+fastai,68134bb77e580e428463f9cf579d978d51b5800c#7,docs_src/vision.image.ipynb,124,114,merge,n,124,124
+fastai,68134bb77e580e428463f9cf579d978d51b5800c#7,docs_src/vision.image.ipynb,118,114,merge,n,124,124
+fastai,b5f0c79d7d1a45168023d61d6e4aeb97008436b9#5,docs_src/text.models.ipynb,32,8,merge,y,32,32
+fastai,b5f0c79d7d1a45168023d61d6e4aeb97008436b9#5,docs_src/text.models.ipynb,31,8,merge,y,32,32
+recommenders,62bde140f7444be4474618cc710399164912f888#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,4,3,merge,y,4,4
+recommenders,62bde140f7444be4474618cc710399164912f888#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,4,3,merge,y,5,5
+recommenders,62bde140f7444be4474618cc710399164912f888#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,5,3,merge,y,4,4
+recommenders,62bde140f7444be4474618cc710399164912f888#0,notebooks/00_quick_start/wide_deep_model_movielens.ipynb,5,3,merge,y,5,5
+ThinkDSP,0b35368148c69c3d2773dc4ba8543d35acd976a7#0,code/chap06.ipynb,10,10,merge,n,10,10
+ThinkDSP,0b35368148c69c3d2773dc4ba8543d35acd976a7#0,code/chap06.ipynb,12,10,merge,n,10,10
+fastai,2bbbaabe934fde46cbd4bd8cb44b770f7cf7720c#4,docs_src/text.data.ipynb,41,42,merge,n,-1,-1
+fastai,2bbbaabe934fde46cbd4bd8cb44b770f7cf7720c#4,docs_src/text.data.ipynb,39,42,merge,n,-1,-1
+examples,771667984b4c90168e981c365477b790e081fc00#2,6_lstm.ipynb,11,11,merge,n,11,11
+examples,771667984b4c90168e981c365477b790e081fc00#2,6_lstm.ipynb,15,11,merge,n,11,11
+fastai,964e4687291873d967ce247e0d08b81e5a229a56#1,docs_src/data_block.ipynb,56,53,merge,n,-1,-1
+fastai,964e4687291873d967ce247e0d08b81e5a229a56#1,docs_src/data_block.ipynb,43,53,merge,n,-1,-1
+ThinkDSP,86f9083d0d6f8178ed7bbbbbf705f6427512f895#2,code/chap02soln.ipynb,9,38,merge,n,-1,-1
+ThinkDSP,86f9083d0d6f8178ed7bbbbbf705f6427512f895#2,code/chap02soln.ipynb,11,38,merge,n,-1,-1
+ThinkDSP,86f9083d0d6f8178ed7bbbbbf705f6427512f895#2,code/chap02soln.ipynb,12,38,merge,n,-1,-1
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#4,PmagPy_plots_analysis.ipynb,152,152,merge,n,152,152
+PmagPy,a64b87b63bb7540728ebf494b65b6c36a1b43291#4,PmagPy_plots_analysis.ipynb,166,152,merge,n,152,152
+h2o-3,91fd4def9f2c481cc91e6572c35b2a7dd710dd10#1,h2o-py/demos/glrm_census_large.ipynb,9,9,merge,n,9,9
+h2o-3,91fd4def9f2c481cc91e6572c35b2a7dd710dd10#1,h2o-py/demos/glrm_census_large.ipynb,11,9,merge,n,9,9
+Data-Analysis,23244de92fcb59bd92b120df05595902fe3a897a#0,plotly/plotly-time-series.ipynb,54,54,merge,n,54,54
+Data-Analysis,23244de92fcb59bd92b120df05595902fe3a897a#0,plotly/plotly-time-series.ipynb,31,54,merge,n,54,54
+fastai,3fd0af84b6dadd0be604d34716a316b7cdfeff07#0,docs_src/data_block.ipynb,152,134,merge,n,152,152
+fastai,3fd0af84b6dadd0be604d34716a316b7cdfeff07#0,docs_src/data_block.ipynb,150,134,merge,n,152,152
+ThinkDSP,90e4b3195e527253e246dbbce3d9e5192048db44#4,code/chap02soln.ipynb,24,24,merge,n,24,24
+ThinkDSP,90e4b3195e527253e246dbbce3d9e5192048db44#4,code/chap02soln.ipynb,32,24,merge,n,24,24
+recommenders,412cc8de5b7372b55e703ecac85524be163b4221#0,notebooks/04_model_select_and_optimize/nni_surprise_svd.ipynb,41,41,merge,n,41,41
+recommenders,412cc8de5b7372b55e703ecac85524be163b4221#0,notebooks/04_model_select_and_optimize/nni_surprise_svd.ipynb,44,41,merge,n,41,41
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,12,11,merge,y,12,12
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,12,11,merge,y,13,13
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,13,11,merge,y,12,12
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,13,11,merge,y,13,13
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,14,11,merge,y,12,12
+recommenders,a02a089a5c413a7313f369f484537b613dd8dad0#1,notebooks/04_model_select_and_optimize/aml_hyperparameter_tuning.ipynb,14,11,merge,y,13,13
+h2o-3,19ab94b13e013a23258100f8358801db86ad675e#15,h2o-py/demos/confusion_matrices_binomial.ipynb,9,10,merge,n,10,10
+h2o-3,19ab94b13e013a23258100f8358801db86ad675e#15,h2o-py/demos/confusion_matrices_binomial.ipynb,10,10,merge,n,10,10
+fastai,2b9115a37bfdc8d42ccc7d4d2462ce0353b1cd7a#4,docs_src/tabular.transform.ipynb,33,27,merge,n,31,31
+fastai,2b9115a37bfdc8d42ccc7d4d2462ce0353b1cd7a#4,docs_src/tabular.transform.ipynb,31,27,merge,n,31,31
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,163,199,merge,n,199,199
+PmagPy,a80c889e7a63e964b9077f168c0835417137b221#0,PmagPy-cli.ipynb,199,199,merge,n,199,199
+Data-Analysis,f5fb7d13401f2bba82165f2657ea344ec9cdea24#0,poisson/asteroid-impacts-poisson.ipynb,2,53,merge,n,-1,-1
+Data-Analysis,f5fb7d13401f2bba82165f2657ea344ec9cdea24#0,poisson/asteroid-impacts-poisson.ipynb,35,53,merge,n,-1,-1
+Data-Analysis,f5fb7d13401f2bba82165f2657ea344ec9cdea24#0,poisson/asteroid-impacts-poisson.ipynb,36,53,merge,n,-1,-1
+Data-Analysis,f5fb7d13401f2bba82165f2657ea344ec9cdea24#0,poisson/asteroid-impacts-poisson.ipynb,23,53,merge,n,-1,-1
+Data-Analysis,f5fb7d13401f2bba82165f2657ea344ec9cdea24#0,poisson/asteroid-impacts-poisson.ipynb,26,53,merge,n,-1,-1
+Data-Analysis,f5fb7d13401f2bba82165f2657ea344ec9cdea24#0,poisson/asteroid-impacts-poisson.ipynb,27,53,merge,n,-1,-1
+fastai,f93ddafcdfdc0f96ed059af0eff59a10b2726dca#0,courses/ml1/lesson1.ipynb,41,48,merge,n,41,41
+fastai,f93ddafcdfdc0f96ed059af0eff59a10b2726dca#0,courses/ml1/lesson1.ipynb,101,48,merge,n,41,41
+recommenders,f2bb36b95e3d9db0c75d02c8143b413242ea6726#0,notebooks/05_operationalize/aks_locust_load_test.ipynb,19,20,merge,y,19,19
+recommenders,f2bb36b95e3d9db0c75d02c8143b413242ea6726#0,notebooks/05_operationalize/aks_locust_load_test.ipynb,19,20,merge,y,21,21
+recommenders,f2bb36b95e3d9db0c75d02c8143b413242ea6726#0,notebooks/05_operationalize/aks_locust_load_test.ipynb,21,20,merge,y,19,19
+recommenders,f2bb36b95e3d9db0c75d02c8143b413242ea6726#0,notebooks/05_operationalize/aks_locust_load_test.ipynb,21,20,merge,y,21,21
+fastai,d22bc506642576be1b5273282f4da35d2bcf05bd#0,docs_src/text.data.ipynb,24,12,merge,n,12,12
+fastai,d22bc506642576be1b5273282f4da35d2bcf05bd#0,docs_src/text.data.ipynb,12,12,merge,n,12,12
+examples,6f899dcbce9660dc6ddcd1ed87c9e084dffc8e5c#0,1_notmnist.ipynb,16,13,merge,n,-1,-1
+examples,6f899dcbce9660dc6ddcd1ed87c9e084dffc8e5c#0,1_notmnist.ipynb,9,13,merge,n,-1,-1
+examples,6f899dcbce9660dc6ddcd1ed87c9e084dffc8e5c#0,1_notmnist.ipynb,15,13,merge,n,-1,-1
