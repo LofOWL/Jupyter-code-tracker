@@ -23,7 +23,7 @@ class MapBlock:
         self.parent_block_first_line = [ i for i in self.data if i.parent.exist and i.parent.line == 1]
 
     def map_block(self,input_block,type):
-        if type == "c":
+        if type == "old":
             result = []
             for mp in self.data:
                 if mp.child.block == input_block and mp.parent.exist:

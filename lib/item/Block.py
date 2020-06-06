@@ -302,7 +302,7 @@ class ZoomBlock(Canvas):
 
         if self.clickedblock.type == "old":
             mapped_block = set([i.parent.block for i in output])
-
+            print(mapped_block)
             block_list = []
             h = 0
             for i in mapped_block:
