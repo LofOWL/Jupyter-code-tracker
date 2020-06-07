@@ -106,17 +106,26 @@ class Tool:
             self.currentId = self.shaList.get()
             current_commit = self.currentId
             pa = self.pa[self.pa["current_commit"] == str(current_commit)]
-
-            all_files = list(pa["filename"])
-            self.filesData = all_files
-            self.filesListBox['values'] = self.filesData
-            self.filesListBox.current(0)
+            if len(pa) != 0:
+                all_files = list(pa["filename"])
+                self.filesData = all_files
+                self.filesListBox['values'] = self.filesData
+                self.filesListBox.current(0)
+            else:
+                pa = list(self.pa["current_commit"])
+                filter_commit = []
+                for commit in pa:
+                    if str(self.currentId) in commit:
+                        filter_commit.append(commit)
+                self.shaList['values'] = filter_commit
         self.search_button = Button(self.root,text="Search",command=reload)
 
 
     def _init_submit_button(self):
         def reload():
             self.currentId = self.shaList.get()
+
+            self.shaList['values'] = self.shaData
             self.currentFile = self.filesListBox.get()
             mp = Map(self.commit_files_id(),self.path)
             self.canvas.refresh(mp)
