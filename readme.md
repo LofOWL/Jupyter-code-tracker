@@ -3,7 +3,7 @@
 Demo:
 
 1. cd Jupyter-code-tracker
-2. python3 main.py 10118245
+2. python3 main.py example
 
 
 ##### Still working on below (some bugs):

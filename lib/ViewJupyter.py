@@ -14,8 +14,7 @@ class ViewJupyter:
     def __init__(self,mp):
         self.path = mp.path
         self.old_path = self.path+"/Old/"
-        self.mp = mp
-
+        self.mp = mp 
         self.broswer_c = None
         self.broswer_p = None
 
@@ -27,7 +26,7 @@ class ViewJupyter:
 
     def updateC(self):
         # file_path = self.old_path+self.mp.name+"#c"+".ipynb"
-        file_path = "10118245/Old/"+self.mp.name+"#c.ipynb"
+        file_path = "example/Old/"+self.mp.name+"#c.ipynb"
         html = file_path.replace("#","%23")
         #self.broswer_c.get("http://localhost:9000/tree"+"/Desktop"+self.html.split("Desktop")[1])
         print(html)
@@ -36,7 +35,7 @@ class ViewJupyter:
 
     def updateP(self):
         # file_path = self.old_path+self.mp.name+"#p"+".ipynb"
-        file_path = "10118245/Old/"+self.mp.name+"#p.ipynb"
+        file_path = "example/Old/"+self.mp.name+"#p.ipynb"
         html = file_path.replace("#","%23")
         #self.broswer_p.get("http://localhost:9000/tree"+"/Desktop"+self.html.split("Desktop")[1])
         print(html)
@@ -67,11 +66,8 @@ class ViewJupyter:
 
             self.address = address
 
-            tool_address = self.path.split("/")
-            tool_address = "/".join(tool_address[:len(tool_address)-1])+"/chromedriver"
-
-            self.broswer_c = webdriver.Chrome(tool_address)
-            self.broswer_p = webdriver.Chrome(tool_address)
+            self.broswer_c = webdriver.Chrome('./lib/chromedriver')
+            self.broswer_p = webdriver.Chrome('./lib/chromedriver')
 
             self.broswer_c.get(self.address)
             self.broswer_p.get(self.address)
