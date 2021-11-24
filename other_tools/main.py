@@ -20,7 +20,7 @@ def convert(output):
 	# divide the output into each cell
 	changes = list()
 	for sentence in sentences:
-		if '##' in sentence:
+		if re.match(f'^## ',sentence):
 			changes.append([sentence])
 		elif re.match(r'^(\+|\-){1}[a-zA-Z ]',sentence):
 			tmp = changes.pop(-1)
