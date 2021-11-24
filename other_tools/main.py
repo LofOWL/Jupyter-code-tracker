@@ -8,6 +8,7 @@ import re
 from csection import csection
 from configs import DELETED,INSERTED,MODIFIED
 from convert_lines import cell_mapping
+from sort import cell_sorted
 
 ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 nbdime = lambda x,y: subprocess.getoutput(f'nbdiff -s {x} {y}')
@@ -41,6 +42,14 @@ def convert(output):
 if __name__ == "__main__":
 	output = nbdime(OLD_PATH,NEW_PATH)
 	output = convert(output)
-	cell_mapping(output,OLDCELLLEN,NEWCELLLEN)
+	output = cell_mapping(output,OLDCELLLEN,NEWCELLLEN)
+	output = cell_sorted(output)
+	for out in output:
+		if out[0] == None:
+			print(f' --- C{out[1]}')
+		elif out[1] == None:
+			print(f'C{out[0]} --- ')
+		else:
+			print(f'C{out[0]} --- C{out[1]}')
 
 

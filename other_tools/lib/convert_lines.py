@@ -27,8 +27,7 @@ def cell_mapping(lines,old_len,new_len):
 	insert_cell = [ele for ele in range(new_len) if not any(str(ele) in i for i in insert)]
 
 	mapping = list(map(lambda x:[str(x[0]),str(x[1][0])] if len(x[1]) else [str(x[0]),None],list(old_map.items()))) + [[None,str(i)] for i in insert_cell]
-	print(mapping)
 
-
+	return mapping
 
 	
