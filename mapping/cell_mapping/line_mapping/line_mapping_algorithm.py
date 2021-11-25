@@ -20,7 +20,8 @@ def lcs(x,y):
 	i,j = m,n
 	while i > 0 and j > 0:
 		if x[i-1] == y[j-1]:
-			lcs[index-1] = [x[i-1].cell_index,x[i-1].line_index,y[j-1].cell_index,y[j-1].line_index]
+			# lcs[index-1] = [x[i-1].cell_index,x[i-1].line_index,y[j-1].cell_index,y[j-1].line_index]
+			lcs[index-1] = [x[i-1].id(),y[j-1].id()]
 			i -= 1
 			j -= 1
 			index -= 1
