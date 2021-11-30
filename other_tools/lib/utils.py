@@ -20,5 +20,16 @@ def convert(self,key):
         cells = list(map(fmap,index_type_lines))
         return cells
 
+def filter_cell(mapping):
+	pairs = list()
+	for pair in mapping:
+		if pair[1] == None:
+			pairs.append(pair)
+		elif pair[0] == None:
+			pairs.append(pair)
+		elif pair[1][-1] == 'm':
+			pairs.append(pair)
+	return pairs
+
 if __name__ == "__main__":
 	print(Cell)

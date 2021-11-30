@@ -15,7 +15,7 @@ class NotebookLine(Line):
 		self.index = None
 
 	def id(self):
-		return self.index	
+		return [self.cell_index,self.index]
 
 	def setCellIndex(self,index):
 		self.cell_index = index
@@ -27,7 +27,7 @@ class NotebookLine(Line):
 		self.index = index
 	
 	def format(self,*kwg):
-		return f'{self.index},{self.cell_index},{self.line_index}'	
+		return f'{self.cell_index},{self.line_index},{self.line_index}'	
 
 if __name__ == "__main__":
 	print("notebook line")
