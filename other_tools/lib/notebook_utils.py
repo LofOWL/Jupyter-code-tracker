@@ -94,7 +94,7 @@ def replace_mapping(mapping,merge):
 	for i in range(len(tmp_mapping)):
 		mapping = tmp_mapping[i]
 		if type(mapping[1]) != list:
-			if mapping[1] and int(mapping[1]) in cache_new:
+			if mapping[1] != None and int(mapping[1]) in cache_new:
 				remove_index.append(i)
 	return [value for index,value in enumerate(tmp_mapping) if index not in remove_index]
 
