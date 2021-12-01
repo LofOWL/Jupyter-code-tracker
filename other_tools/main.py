@@ -55,7 +55,7 @@ if __name__ == "__main__":
 	old_lines,new_lines = extract_lines(output,OLD,NEW)
 	output = lcs(old_lines,new_lines)
 	merge,split = merge_split(output)
-	
+
 	# new mapping
 	output = replace_mapping(mapping,merge)	
 	for i in output:

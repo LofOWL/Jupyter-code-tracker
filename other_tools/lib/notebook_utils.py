@@ -85,7 +85,11 @@ def replace_mapping(mapping,merge):
 	for mmapping in merge:	
 		for i in range(len(tmp_mapping)):
 			if tmp_mapping[i][0] == mmapping[0]:
-				tmp_mapping[i] = mmapping
+				if tmp_mapping[i][1] != None: 
+					mcell = int(tmp_mapping[i][1][:-1])
+					tmp_mapping[i] = (mmapping[0],mmapping[1]+[mcell])
+				else:
+					tmp_mapping[i] = mmapping
 				break
 	cache_new = set([j for i in tmp_mapping if type(i[1]) == list for j in i[1]])
 
