@@ -6,7 +6,7 @@ import re
 
 from configs import DELETED,INSERTED,MODIFIED
 from csection import csection
-from notebook_utils import collect_mapping,extract_lines,merge_split,replace_mapping
+from notebook_utils import collect_mapping,extract_lines,merge_split,replace_mapping, find_move_mapping
 from sort import cell_sorted,cell_sorted_merge_identical
 from utils import filter_cell
 from line_mapping_algorithm import lcs
@@ -68,4 +68,17 @@ if __name__ == "__main__":
 		else:
 			add = ','.join([f'C{i}m' for i in i[1]])
 			print(f'C{i[0]} --- {add}')
-			
+
+	print("---")	
+	# move mapping
+	output = find_move_mapping(output,OLD,NEW)
+	for i in output:
+		if i[1] == None:
+			print(f'C{i[0]} --- ')
+		elif i[0] == None:
+			print(f'--- C{i[1]}')
+		elif type(i[1]) == str:
+			print(f'C{i[0]} --- C{i[1]}')
+		else:
+			add = ','.join([f'C{i}m' for i in i[1]])
+			print(f'C{i[0]} --- {add}')

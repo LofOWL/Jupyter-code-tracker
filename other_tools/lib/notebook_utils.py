@@ -1,4 +1,8 @@
 from configs import DELETED,INSERTED,MODIFIED 
+from floc_simhash import SimHash
+from scipy.spatial.distance import hamming
+import textdistance
+
 
 def collect_mapping(lines,old_len,new_len):
 	
@@ -44,7 +48,7 @@ def extract_lines(pairs,old,new):
 	new_lines = [line for line in new.lines if line.cell_index in new_indexs ]
 	
 	return old_lines, new_lines	
-		
+
 def merge_split(lines_mapping):
 	merge,split = dict(),dict()
 	for line in lines_mapping:
@@ -93,3 +97,37 @@ def replace_mapping(mapping,merge):
 			if mapping[1] and int(mapping[1]) in cache_new:
 				remove_index.append(i)
 	return [value for index,value in enumerate(tmp_mapping) if index not in remove_index]
+
+def find_move_mapping(mappings,OLD,NEW):
+	delete,add = list(),list()
+	for mapping in mappings:
+		if mapping[1] == None: delete.append(mapping[0])
+		if mapping[0] == None: add.append(mapping[1])
+
+	complete = lambda x: '0'*(64-len(x))+x
+	hex2bin = lambda x: complete(bin(int(x,16))[2:])
+	old = SimHash(n_bits=64).hash('hello my name is')
+	new = SimHash(n_bits=64).hash('hello my name is jf')	
+	hamming = lambda x,y: sum(i != j for i,j in zip(x,y))
+	bin_old,bin_new = hex2bin(old),hex2bin(new)
+	
+	add_text = [''.join(NEW.cells[i]['source']) for i in add]
+	move = list()
+	for i in delete:
+		old_text = ''.join(OLD.cells[i]['source'])
+		similarity = [textdistance.ratcliff_obershelp(old_text,i) for i in add_text]
+		max_simi = max(similarity)
+		if max_simi >= 0.9:
+			index = similarity.index(max_simi)
+			move.append([i,add[index]])
+
+	tmp_mapping = mappings[:]
+	remove = list()
+	for i in move:
+		for j in range(len(tmp_mapping)):
+			if i[0] == tmp_mapping[j][0]:
+				tmp_mapping[j] = [i[0],str(i[1])] 
+			if i[1] == tmp_mapping[j][1]:
+				remove.append(j)
+
+	return [value for index,value in enumerate(tmp_mapping) if index not in remove]
