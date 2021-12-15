@@ -15,16 +15,6 @@ def CellMapping(old,new):
 	output = collect_mapping(output,len(old.cells),len(new.cells))
 	identical = [[int(mapping[0]),int(mapping[1])] for mapping in output if mapping[1] and mapping[1][-1] != 'm' and mapping[0]]
 	output = cell_sorted(output)
-	for i in output:
-		if i[1] == None:
-			print(f'C{i[0]} --- ')
-		elif i[0] == None:
-			print(f'--- C{i[1]}')
-		elif type(i[1]) == str:
-			print(f'C{i[0]} --- C{i[1]}')
-		else:
-			add = ','.join([f'C{i}m' for i in i[1]])
-			print(f'C{i[0]} --- {add}')
 	mapping = output[:]
 	print("---")
 
@@ -33,7 +23,6 @@ def CellMapping(old,new):
 	old_lines,new_lines = extract_lines(output,OLD,NEW)
 	output = lcs(old_lines,new_lines)
 	merge,split = merge_split(output)
-	print(merge)
 
 	# new mapping
 	output = replace_mapping(mapping,merge)	
@@ -64,8 +53,9 @@ def CellMapping(old,new):
 	return output
 
 if __name__ == "__main__":
-	old_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/ea960ae741d9b2c9dae9a54e8d0fa44a3f16d5da_graphics#pgms.ipynb'
-	new_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/6b54550e7861677ad4410db245523331952f4c74_graphics#pgms.ipynb'
+	old_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/28243a68800ef8f41e92d3d43296787940b97aac_graphics#graphics.ipynb'
+	new_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/376b094aa6a3f4572774e15e7659af9eb82981b3_graphics#graphics.ipynb'
+
 	old,new = Notebook(old_path),Notebook(new_path)		
 	output = CellMapping(old,new)
 	print(output)

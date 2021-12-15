@@ -25,6 +25,14 @@ def collect_mapping(lines,old_len,new_len):
 				old_map[old_pointer] = old_map.get(old_pointer) + [str(new_pointer)+'m']
 				old_pointer += 1
 				new_pointer += 1
+	
+	# find all the identical mapping 
+	while old_pointer < old_len or new_pointer < new_len:
+		old_map[old_pointer] += [new_pointer]
+		old_pointer += 1
+		new_pointer += 1
+
+	# add insert cell
 	items = list(old_map.values())
 	insert = [str(i) for ele in items for i in ele]
 	insert_cell = [ele for ele in range(new_len) if not any(str(ele) in i for i in insert)]
