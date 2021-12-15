@@ -84,9 +84,10 @@ def replace_mapping(mapping,merge):
 	for mmapping in merge:	
 		for i in range(len(tmp_mapping)):
 			if tmp_mapping[i][0] == mmapping[0]:
+				# need to change 
 				if tmp_mapping[i][1] != None: 
 					mcell = int(tmp_mapping[i][1][:-1])
-					tmp_mapping[i] = (mmapping[0],mmapping[1]+[mcell])
+					tmp_mapping[i] = (mmapping[0],list(set(mmapping[1]+[mcell])))
 				else:
 					tmp_mapping[i] = mmapping
 				break
@@ -97,8 +98,12 @@ def replace_mapping(mapping,merge):
 	for i in range(len(tmp_mapping)):
 		mapping = tmp_mapping[i]
 		if type(mapping[1]) != list:
-			if mapping[1] != None and int(mapping[1]) in cache_new:
-				remove_index.append(i)
+			if type(mapping[1]) != int:
+				if mapping[1] != None and mapping[1].isnumeric() and int(mapping[1]) in cache_new:
+					remove_index.append(i)
+			else:
+				if mapping[1] in cache_new:
+					remove_index.append(i)
 	return [value for index,value in enumerate(tmp_mapping) if index not in remove_index]
 
 def find_move_mapping(mappings,OLD,NEW):
