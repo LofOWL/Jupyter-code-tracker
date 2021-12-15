@@ -39,7 +39,7 @@ def CellMapping(old,new):
 
 	print("---")	
 	# move mapping
-	output = find_move_mapping(output,OLD,NEW)
+	output = find_move_mapping(output,old,new)
 	for i in output:
 		if i[1] == None:
 			print(f'C{i[0]} --- ')
@@ -53,6 +53,8 @@ def CellMapping(old,new):
 	return output
 
 if __name__ == "__main__":
-	old,new = Notebook(OLD_PATH),Notebook(NEW_PATH)		
+	old_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/7e732bfad6ca09d1e75a3ba960ccd2b812ccd265_graphics#pgms.ipynb'
+	new_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/ea960ae741d9b2c9dae9a54e8d0fa44a3f16d5da_graphics#pgms.ipynb'
+	old,new = Notebook(old_path),Notebook(new_path)		
 	output = CellMapping(old,new)
 	print(output)
