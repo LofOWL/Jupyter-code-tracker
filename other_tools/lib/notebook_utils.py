@@ -1,5 +1,4 @@
 from configs import DELETED,INSERTED,MODIFIED 
-from floc_simhash import SimHash
 from scipy.spatial.distance import hamming
 import textdistance
 
@@ -110,10 +109,7 @@ def find_move_mapping(mappings,OLD,NEW):
 
 	complete = lambda x: '0'*(64-len(x))+x
 	hex2bin = lambda x: complete(bin(int(x,16))[2:])
-	old = SimHash(n_bits=64).hash('hello my name is')
-	new = SimHash(n_bits=64).hash('hello my name is jf')	
 	hamming = lambda x,y: sum(i != j for i,j in zip(x,y))
-	bin_old,bin_new = hex2bin(old),hex2bin(new)
 	
 	add_text = [''.join(NEW.cells[i]['source']) for i in add]
 	move = list()

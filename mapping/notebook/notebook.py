@@ -5,6 +5,7 @@ import json as js
 class Notebook:
 	
 	def __init__(self,path):
+		self.path = path
 		self.notebook = None
 		with open(path,'r') as file:
 			self.notebook = js.load(file)				
@@ -25,7 +26,7 @@ class Notebook:
 				line_index += 1
 				index += 1
 			cell_index += 1
-		
+			
 				
 if __name__ == "__main__":
 	print("notebook")
