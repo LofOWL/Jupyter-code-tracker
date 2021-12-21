@@ -35,7 +35,7 @@ def collect_mapping(lines,old_len,new_len):
 	# add insert cell
 	items = list(old_map.values())
 	insert = [str(i) for ele in items for i in ele]
-	insert_cell = [ele for ele in range(new_len) if not any(str(ele) == i if i[-1] != 'm' else i[:-1] for i in insert)]
+	insert_cell = [ele for ele in range(new_len) if not any(str(ele) == (i if i[-1] != 'm' else i[:-1]) for i in insert)]
 
 	mapping = list(map(lambda x:[str(x[0]),str(x[1][0])] if len(x[1]) else [str(x[0]),None],list(old_map.items()))) + [[None,str(i)] for i in insert_cell]
 	
