@@ -12,7 +12,7 @@ from utils import filter_cell
 from line_mapping_algorithm import lcs
 
 ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-nbdime = lambda x,y: subprocess.getoutput(f'nbdiff -s {x} {y}')
+nbdime = lambda x,y: subprocess.getoutput(f'nbdiff -s "{x}" "{y}"')
 
 	
 def convert_nbdime(output):

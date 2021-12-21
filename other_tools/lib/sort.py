@@ -21,13 +21,13 @@ def cell_sorted(lines):
 		normal.insert(add_index,line)	
 
 	# showing the output
-	for out in normal:
-		if out[0] == None:
-			print(f' --- C{out[1]}')
-		elif out[1] == None:
-			print(f'C{out[0]} --- ')
-		else:
-			print(f'C{out[0]} --- C{out[1]}')
+	#for out in normal:
+	#	if out[0] == None:
+	#		print(f' --- C{out[1]}')
+	#	elif out[1] == None:
+	#		print(f'C{out[0]} --- ')
+	#	else:
+	#		print(f'C{out[0]} --- C{out[1]}')
 
 	return normal
 

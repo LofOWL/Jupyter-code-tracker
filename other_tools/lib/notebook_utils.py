@@ -27,7 +27,7 @@ def collect_mapping(lines,old_len,new_len):
 				new_pointer += 1
 	
 	# find all the identical mapping 
-	while old_pointer < old_len or new_pointer < new_len:
+	while old_pointer < old_len:
 		old_map[old_pointer] += [new_pointer]
 		old_pointer += 1
 		new_pointer += 1
@@ -129,10 +129,11 @@ def find_move_mapping(mappings,OLD,NEW):
 	for i in delete:
 		old_text = ''.join(OLD.cells[i]['source'])
 		similarity = [textdistance.ratcliff_obershelp(old_text,i) for i in add_text]
-		max_simi = max(similarity)
-		if max_simi >= 0.9:
-			index = similarity.index(max_simi)
-			move.append([i,add[index]])
+		if len(similarity) >= 1:
+			max_simi = max(similarity)
+			if max_simi >= 0.9:
+				index = similarity.index(max_simi)
+				move.append([i,add[index]])
 
 	tmp_mapping = mappings[:]
 	remove = list()
