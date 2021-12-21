@@ -35,7 +35,7 @@ def collect_mapping(lines,old_len,new_len):
 	# add insert cell
 	items = list(old_map.values())
 	insert = [str(i) for ele in items for i in ele]
-	insert_cell = [ele for ele in range(new_len) if not any(str(ele) in i for i in insert)]
+	insert_cell = [ele for ele in range(new_len) if not any(str(ele) == i if i[-1] != 'm' else i[:-1] for i in insert)]
 
 	mapping = list(map(lambda x:[str(x[0]),str(x[1][0])] if len(x[1]) else [str(x[0]),None],list(old_map.items()))) + [[None,str(i)] for i in insert_cell]
 	
@@ -124,10 +124,10 @@ def find_move_mapping(mappings,OLD,NEW):
 	hex2bin = lambda x: complete(bin(int(x,16))[2:])
 	hamming = lambda x,y: sum(i != j for i,j in zip(x,y))
 	
-	add_text = [''.join(NEW.cells[i]['source']) for i in add]
+	add_text = [''.join(NEW.cells[i]['source'] if 'source' in NEW.cells[i].keys() else NEW.cells[i]['input']) for i in add]
 	move = list()
 	for i in delete:
-		old_text = ''.join(OLD.cells[i]['source'])
+		old_text = ''.join(OLD.cells[i]['source'] if 'source' in OLD.cells[i].keys() else OLD.cells[i]['input'])
 		similarity = [textdistance.ratcliff_obershelp(old_text,i) for i in add_text]
 		if len(similarity) >= 1:
 			max_simi = max(similarity)

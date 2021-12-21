@@ -55,8 +55,8 @@ def CellMapping(old,new):
 if __name__ == "__main__":
 	#old_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/376b094aa6a3f4572774e15e7659af9eb82981b3_graphics#graphics.ipynb'
 	#new_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/8336e016614e784c0ca8820574798ab3e8606732_graphics#graphics.ipynb'
-	old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/376b094aa6a3f4572774e15e7659af9eb82981b3_graphics#graphics.ipynb"
-	new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/8336e016614e784c0ca8820574798ab3e8606732_graphics#graphics.ipynb"
+	old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/9172f0d5c2cdf985c4a6ae784d53265b26876936_predictive_analysis.ipynb"
+	new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/a5ab94422aa9de2cabfa00b39e96aa65f9b189c3_predictive_analysis.ipynb"
 	#old_path = '/home/lofowl/Desktop/old1.ipynb'
 	#new_path = '/home/lofowl/Desktop/new1.ipynb'
 	old,new = Notebook(old_path),Notebook(new_path)		

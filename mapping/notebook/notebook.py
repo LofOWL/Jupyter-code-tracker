@@ -9,12 +9,12 @@ class Notebook:
 		self.notebook = None
 		with open(path,'r') as file:
 			self.notebook = js.load(file)				
-		
-		self.cells = self.notebook['cells']
+		self.cells = self.notebook['cells'] if 'worksheets' not in self.notebook.keys() else self.notebook['worksheets'][0]['cells']
+		self.is_old = 'worksheets' in self.notebook.keys()
 		index,cell_index = 0,0
 		self.lines = list()
 		for cell in self.cells:
-			lines = cell['source']
+			lines = cell['source'] if 'source' in cell.keys() else cell['input']
 			line_index = 0
 			for line in lines:
 				line = line.replace('\n','')
@@ -30,5 +30,5 @@ class Notebook:
 				
 if __name__ == "__main__":
 	print("notebook")
-	path = 'notebook.ipynb'
+	path = '/media/lofowl/My Passport/CISC834/notebook_cache/881994c6fcbba6ad8a41829410e5b568ff28d00d_notebooks#Riemann Constant Vector Paper.ipynb'
 	nt = Notebook(path)
