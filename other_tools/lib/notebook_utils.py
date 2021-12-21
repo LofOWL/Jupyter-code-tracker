@@ -1,3 +1,4 @@
+from re import I
 from configs import DELETED,INSERTED,MODIFIED 
 from scipy.spatial.distance import hamming
 import textdistance
@@ -53,6 +54,10 @@ def extract_lines(pairs,old,new):
 	# filter cells
 	old_lines = [line for line in old.lines if line.cell_index in old_indexs ]	
 	new_lines = [line for line in new.lines if line.cell_index in new_indexs ]
+
+	# remove the empty lines
+	old_lines = [line for line in old_lines if line.line.replace(" ","") != ""]
+	new_lines = [line for line in new_lines if line.line.replace(" ","") != ""]
 	
 	return old_lines, new_lines	
 

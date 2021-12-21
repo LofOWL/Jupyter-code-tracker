@@ -1,5 +1,4 @@
 import set_env
-from data import OLD_PATH,NEW_PATH,OLD,NEW
 from main import convert_nbdime,nbdime
 from notebook_utils import collect_mapping, extract_lines,merge_split,replace_mapping, find_move_mapping
 from sort import cell_sorted
@@ -20,7 +19,7 @@ def CellMapping(old,new):
 
 	# find merge & split
 	output = filter_cell(output)
-	old_lines,new_lines = extract_lines(output,OLD,NEW)
+	old_lines,new_lines = extract_lines(output,old,new)
 	output = lcs(old_lines,new_lines)
 	merge,split = merge_split(output)
 
@@ -55,8 +54,8 @@ def CellMapping(old,new):
 if __name__ == "__main__":
 	#old_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/376b094aa6a3f4572774e15e7659af9eb82981b3_graphics#graphics.ipynb'
 	#new_path = '/home/lofowl/Desktop/CISC834/project/Jupyter-cell-evoluation/lib/cache/8336e016614e784c0ca8820574798ab3e8606732_graphics#graphics.ipynb'
-	old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/9172f0d5c2cdf985c4a6ae784d53265b26876936_predictive_analysis.ipynb"
-	new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/a5ab94422aa9de2cabfa00b39e96aa65f9b189c3_predictive_analysis.ipynb"
+	old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/e4b53b93bf0f2a5d4803457d6b6cb57cc4517019_galleryTestFunctions.ipynb"
+	new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/15e288a9605c778bd8976bdcb93f4e19009ace23_galleryTestFunctions.ipynb"
 	#old_path = '/home/lofowl/Desktop/old1.ipynb'
 	#new_path = '/home/lofowl/Desktop/new1.ipynb'
 	old,new = Notebook(old_path),Notebook(new_path)		
