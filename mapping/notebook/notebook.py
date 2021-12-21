@@ -26,9 +26,26 @@ class Notebook:
 				line_index += 1
 				index += 1
 			cell_index += 1
+	
+	def show(self):
+		index = 0
+		for cell in self.cells:
+			lines = cell['source'] if 'source' in cell.keys() else cell['input']
+			print(f'		{index} {"			".join(lines)}')
+			index += 1
+	
+	def show_with_index(self,index):
+		if index == "None":
+			self.show()
+		else:
+			index = int(index)
+			lines = self.cells[index]['source'] if 'source' in self.cells[index].keys() else self.cells[index]['input']
+			print(f'		{index} {"			".join(lines)}')
 			
 				
 if __name__ == "__main__":
 	print("notebook")
 	path = '/media/lofowl/My Passport/CISC834/notebook_cache/881994c6fcbba6ad8a41829410e5b568ff28d00d_notebooks#Riemann Constant Vector Paper.ipynb'
 	nt = Notebook(path)
+	print(len(nt.cells))
+	nt.show_with_index('None')
