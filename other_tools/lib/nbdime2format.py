@@ -1,6 +1,3 @@
-import set_env
-from data import OLD_PATH,NEW_PATH,OLDCELLLEN,NEWCELLLEN,OLD,NEW
-
 import subprocess
 import re
 
@@ -9,7 +6,6 @@ from csection import csection
 from notebook_utils import collect_mapping,extract_lines,merge_split,replace_mapping, find_move_mapping
 from sort import cell_sorted,cell_sorted_merge_identical
 from utils import filter_cell
-from line_mapping_algorithm import lcs
 
 ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 nbdime = lambda x,y: subprocess.getoutput(f'nbdiff -s "{x}" "{y}"')
@@ -40,8 +36,3 @@ def convert_nbdime(output):
 
 	return lines
 		
-if __name__ == "__main__":
-	# convert nbdime
-	output = nbdime(OLD_PATH,NEW_PATH)
-	output = convert_nbdime(output)
-	print(output)
