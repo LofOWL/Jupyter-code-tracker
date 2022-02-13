@@ -42,10 +42,12 @@ class Notebook:
 			lines = self.cells[index]['source'] if 'source' in self.cells[index].keys() else self.cells[index]['input']
 			print(f'		{index} {"			".join(lines)}')
 			
-				
+	def get_cell_lines(self,cell):
+		return [line for line in self.lines if line.cell_index == cell]
+
 if __name__ == "__main__":
 	print("notebook")
-	path = '/media/lofowl/My Passport/CISC834/notebook_cache/881994c6fcbba6ad8a41829410e5b568ff28d00d_notebooks#Riemann Constant Vector Paper.ipynb'
+	path = '/media/lofowl/My Passport/CISC834/notebook_cache/645be9dcf5bf311af394a590c5d38fab151aa6d1_docs#Pfam.ipynb'
 	nt = Notebook(path)
 	print(len(nt.cells))
 	nt.show_with_index('None')
