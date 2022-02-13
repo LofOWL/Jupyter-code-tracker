@@ -42,11 +42,40 @@ def collect_mapping(lines,old_len,new_len):
 	
 	return mapping
 
-def extract_lines(pairs,old,new):
-	old_indexs,new_indexs = list(),list()
+def collect_not_modified_line(pair,old,new,lcs):
+	old_cell = int(pair[0])
+	new_cell = int(pair[1][:-1])
+	old_lines = [line for line in old.get_cell_lines(old_cell) if line.line.replace(" ","") != ""]
+	new_lines = [line for line in new.get_cell_lines(new_cell) if line.line.replace(" ","") != ""]
+	mapping_lines = lcs(old_lines,new_lines)
+	old_lines_index = [i[0][1] for i in mapping_lines]
+	old_not_touch = [line for line in old_lines if line.index not in old_lines_index]
+
+	new_lines_index = [i[1][1] for i in mapping_lines]
+	new_not_touch = [line for line in new_lines if line.index not in new_lines_index]
+
+	return old_not_touch,new_not_touch
+
+
+def collect_not_modified_lines(pairs,old,new,lcs):
+	not_touch_lines_old,not_touch_lines_new = list(),list()
 	for pair in pairs:
-		if pair[0] != None: old_indexs.append(pair[0])
-		if pair[1] != None: new_indexs.append(pair[1])	
+		not_old,not_new = collect_not_modified_line(pair,old,new,lcs)
+		not_touch_lines_old += not_old
+		not_touch_lines_new += not_new
+	return not_touch_lines_old,not_touch_lines_new
+
+def extract_lines(pairs,old,new,lcs):
+	old_indexs,new_indexs,modified_pair = list(),list(),list()
+	for pair in pairs:
+		if "m" in str(pair[1]):
+			modified_pair.append(pair)
+		else:
+			if pair[0] != None: old_indexs.append(pair[0])
+			if pair[1] != None: new_indexs.append(pair[1])	
+
+	# not touch in modified cell	
+	old_not_touch,new_not_touch = collect_not_modified_lines(modified_pair,old,new,lcs)
 
 	# convert to integer 
 	new_indexs = [int(index[:-1]) if type(index) != int else index for index in new_indexs]	
@@ -58,7 +87,13 @@ def extract_lines(pairs,old,new):
 	# remove the empty lines
 	old_lines = [line for line in old_lines if line.line.replace(" ","") != ""]
 	new_lines = [line for line in new_lines if line.line.replace(" ","") != ""]
-	
+
+	# merge two list
+	old_lines += old_not_touch
+	old_lines = sorted(old_lines,key= lambda x: x.index,reverse=False)
+	new_lines += new_not_touch
+	new_lines = sorted(new_lines,key = lambda x: x.index)
+
 	return old_lines, new_lines	
 
 def merge_split(lines_mapping):

@@ -24,7 +24,6 @@ def CellMapping(old,new):
 	output = nbdime(old.path,new.path)
 	output = convert_nbdime(output)
 	output = collect_mapping(output,len(old.cells),len(new.cells))
-
 	output = cell_sorted(output)
 	#show(output)
 	mapping = output[:]
@@ -32,7 +31,7 @@ def CellMapping(old,new):
 
 	# find all the lines from old version and new version
 	output = filter_cell(output)
-	old_lines,new_lines = extract_lines(output,old,new)
+	old_lines,new_lines = extract_lines(output,old,new,lcs)
 
 	# get the lines mapping
 	output = lcs(old_lines,new_lines)
@@ -51,7 +50,7 @@ def CellMapping(old,new):
 	#print("---")	
 	# move mapping
 	output = find_move_mapping(output,old,new)
-	#show(output)
+	show(output)
 
 	return output
 
@@ -62,8 +61,8 @@ if __name__ == "__main__":
 	#new_path = '/home/lofowl/Desktop/new1.ipynb'
 	#old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/f6cb8be5c0439546057ec8ae1557fa918f7ec746_lab_sessions#lab3#Lab3-Assignment.ipynb"
 	#new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/5bd61e0b276b4eb3ee30d67497795f4ad52f02e0_lab_sessions#lab3#Lab3-Assignment.ipynb"
-	old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/113bcfb40d219ab484461375b30439039ac95d7a_bin#plot_profile.ipynb"
-	new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/44e77fb47c3dac018079c26643bc1a7634c5c24d_bin#plot_profile.ipynb"
+	old_path = "/media/lofowl/My Passport/CISC834/notebook_cache/46c131d03508d0e158d23c8557bea037690f21aa_mimic.ipynb"
+	new_path = "/media/lofowl/My Passport/CISC834/notebook_cache/50dd8b8b090d00ad652edbb08e47308ed4f12b97_mimic.ipynb"
 	old,new = Notebook(old_path),Notebook(new_path)		
 	output = CellMapping(old,new)
 	print(output)
