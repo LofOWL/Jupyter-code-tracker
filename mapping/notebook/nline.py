@@ -27,7 +27,7 @@ class NotebookLine(Line):
 		self.index = index
 	
 	def format(self,*kwg):
-		return f'{self.cell_index},{self.line_index},{self.line_index}'	
+		return f'{self.cell_index},{self.line_index},{self.index}'	
 
 if __name__ == "__main__":
 	print("notebook line")
