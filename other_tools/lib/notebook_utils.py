@@ -150,3 +150,33 @@ def find_move_mapping(mappings,OLD,NEW):
 				remove.append(j)
 
 	return [value for index,value in enumerate(tmp_mapping) if index not in remove]
+
+def find_split(lines,old,new):
+	mapping = dict()
+	for line in lines:
+		pair = ','.join([str(line[0][0]),str(line[1][0])])
+		if pair in mapping.keys():
+			mapping[pair] += 1
+		else:
+			mapping[pair] = 1
+	
+	correct_mappings = list()
+	for key,counts in mapping.items():
+		new_cell = int(key.split(",")[1])
+		# filter by count
+		if counts >= 2:
+			correct_mappings.append(key)
+
+		# filter by percentage
+		#new_cell_len = len(new.get_cell_lines(new_cell))
+		#print(f'{key} {counts} {new_cell_len}')
+
+	format_mapping = dict()
+	for correct_mapping in correct_mappings:
+		old,new = map(int,correct_mapping.split(","))
+		if old in format_mapping.keys():
+			format_mapping[old].append(new)
+		else:
+			format_mapping[old] = [new]
+
+	return list(format_mapping.items())
